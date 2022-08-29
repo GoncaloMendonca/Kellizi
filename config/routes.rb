@@ -13,5 +13,5 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: [:show, :create, :update, :edit, :new ]
-  # resources :insurances, only: [:show]
+  resources :company, only: [:show, :index]
 end
