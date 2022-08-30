@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+    <div class="create-contract-container">
+        Create your contract
+    </div>
+    <div class="panel-body">
+      <div class="container">
+
+        <div class="row">
+            <%= simple_form_for @contract, data: {turbo: false} do |f| %>
+              <%= f.input :price, as: :integer %>
+              <%= f.input :source, as: :integer %>
+              <%= f.input :start_at, as: :datetime %>
+              <%= f.input :end_at, as: :datetime %>
+              <%= f.input :status, as: :boolean %>
+              <%= f.input :created_at, as: :datetime %>
+              <%= f.input :updated_at, as: :datetime %>
+
+              <%= f.button :button, class: 'button' %>
+            <% end %>
+          <%= link_to "<-Back", contracts_path %>
+        </div>
+    </div>
+</div>

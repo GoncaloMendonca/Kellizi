@@ -23,12 +23,12 @@ class ContractsController < ApplicationController
 
   def edit
     @contract = Contract.find(params[:id])
-    @file = File.all
-    @status = Status.all
   end
 
   def update
-    @contract =
+    @contract = Contract.find(params[:id])
+    @contract.update(contract_params)
+    redirect_to contract_path(@contract)
   end
 
   def destroy
