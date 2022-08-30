@@ -1,0 +1,48 @@
+.footer {
+  text-align: center;
+  padding-top: 5px;
+  background-color: $blue;
+  margin-top: 15px;
+  width: 100%;
+  bottom: 0;
+}
+
+.footer a {
+  font-size: 30px;
+  padding-left: 25px;
+  padding-right:25px;
+  color: white;
+}
+.footer ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  padding: 2px;
+}
+
+.footer li h5 {
+  font-size: 15px;
+  padding: 5px;
+  align-content: center;
+}
+
+.footer h4 {
+  color: white;
+  font-weight: lighter;
+}
+
+.footer h5 {
+  color: white;
+  font-size: 10px;
+  font-weight: lighter;
+}
+
+.page-content {
+  min-height: calc(100vh - 160px);
+}
+
+.li .flex-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
