@@ -2,7 +2,7 @@ class ContractsController < ApplicationController
   before_action :set_contract, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contract = Contract.all
+    @contracts = Contract.all
   end
 
   def show
