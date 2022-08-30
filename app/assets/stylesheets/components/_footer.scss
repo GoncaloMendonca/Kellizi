@@ -1,7 +1,7 @@
 .footer {
   text-align: center;
   padding-top: 5px;
-  background-color: $blue;
+  background-color: $dark-blue;
   margin-top: 15px;
   width: 100%;
   bottom: 0;
@@ -22,7 +22,6 @@
 
 .footer li h5 {
   font-size: 15px;
-  padding: 5px;
   align-content: center;
 }
 
@@ -35,14 +34,9 @@
   color: white;
   font-size: 10px;
   font-weight: lighter;
+  padding: 15px;
 }
 
 .page-content {
   min-height: calc(100vh - 160px);
-}
-
-.li .flex-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
