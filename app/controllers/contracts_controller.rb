@@ -14,9 +14,10 @@ class ContractsController < ApplicationController
 
   def create
     @contract = Contract.new(contract_params)
+    @contract.user = current_user
+
     if @contract.save
-      @name = @contract.name.to_s
-      redirect_to contract_path
+      redirect_to contracts_path
     else
       render :new
     end
@@ -27,7 +28,7 @@ class ContractsController < ApplicationController
 
   def update
     if @contract.update(contract_params)
-      redirect_to contract_path, notice: "Contract was updated"
+      redirect_to contract_path(@contract), notice: "Contract was updated"
     else
       render :edit
     end
@@ -35,13 +36,17 @@ class ContractsController < ApplicationController
 
   def destroy
     @contract.destroy
-    redirect_to contract_path, status: :see_other
+    redirect_to contracts_path, status: :see_other
   end
 
   private
 
   def contract_params
-    params.require(:contract).permit(:price, :source, :starts_at, :ends_at, :status, :created_at, :updated_at, :pdf_contract, :pdf_certificate)
+    params.require(:contract).permit(
+      :price, :source, :starts_at, :ends_at, :status, :created_at,
+      :updated_at, :pdf_contract, :pdf_certificate,
+      :company_id, :product_id, :active, :start_at
+    )
   end
 
   def set_contract
