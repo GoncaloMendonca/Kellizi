@@ -4,17 +4,17 @@
     </div>
     <div class="panel-body">
       <div class="container">
-
         <div class="row">
             <%= simple_form_for @contract, data: {turbo: false} do |f| %>
+              <%= f.input :company, as: :string %>
+              <%= f.input :product, as: :string %>
               <%= f.input :price, as: :integer %>
               <%= f.input :source, as: :integer %>
-              <%= f.input :start_at, as: :datetime %>
-              <%= f.input :end_at, as: :datetime %>
-              <%= f.input :status, as: :boolean %>
-              <%= f.input :created_at, as: :datetime %>
-              <%= f.input :updated_at, as: :datetime %>
-
+              <p>Activity Status <%= f.input :status, as: :boolean %></p>
+              <%= f.input :start_at, as: :date %>
+              <%= f.input :ends_at, as: :date %>
+              <%# <%= f.input :pdf_contract, as: :file %> %>
+              <%# <%= f.input :pdf_certificate, as: :file %> %>
               <%= f.button :button, class: 'button' %>
             <% end %>
           <%= link_to "<-Back", contracts_path %>
