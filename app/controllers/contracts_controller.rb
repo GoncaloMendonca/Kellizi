@@ -1,10 +1,11 @@
 class ContractsController < ApplicationController
+  before_action :set_contract, only: [:show, :edit, :update, :destroy]
+
   def index
     @contract = Contract.all
   end
 
   def show
-    @contract = contract.find(params[:id])
   end
 
   def new
@@ -15,31 +16,35 @@ class ContractsController < ApplicationController
     @contract = Contract.new(contract_params)
     if @contract.save
       @name = @contract.name.to_s
-      redirect_to insurance_product_contract_index_path
+      redirect_to contract_path
     else
       render :new
     end
   end
 
   def edit
-    @contract = Contract.find(params[:id])
   end
 
   def update
-    @contract = Contract.find(params[:id])
-    @contract.update(contract_params)
-    redirect_to contract_path(@contract)
+    if @contract.update(contract_params)
+      redirect_to contract_path, notice: "Contract was updated"
+    else
+      render :edit
+    end
   end
 
   def destroy
-    @contract = Contract.find(params[:id])
-    @coontract.destroy
-    redirect_to insurance_product_contract_index_path, status: :see_other
+    @contract.destroy
+    redirect_to contract_path, status: :see_other
   end
 
   private
 
   def contract_params
-    params.require(:contract).permit(:price, :source, :start_at, :ends_at, :status, :created_at, :updated_at)
+    params.require(:contract).permit(:price, :source, :starts_at, :ends_at, :status, :created_at, :updated_at, :pdf_contract, :pdf_certificate)
+  end
+
+  def set_contract
+    @contract = Contract.find(params[:id])
   end
 end

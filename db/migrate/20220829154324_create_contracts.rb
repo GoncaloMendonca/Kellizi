@@ -3,7 +3,7 @@ class CreateContracts < ActiveRecord::Migration[7.0]
     create_table :contracts do |t|
       t.integer :price
       t.integer :source
-      t.datetime :start_at
+      t.datetime :starts_at
       t.datetime :ends_at
       t.boolean :status
 
