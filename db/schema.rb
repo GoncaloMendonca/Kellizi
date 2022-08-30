@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_29_154324) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_30_144803) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,9 +26,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_154324) do
     t.integer "source"
     t.datetime "start_at"
     t.datetime "ends_at"
-    t.boolean "status"
+    t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "product_id"
+    t.bigint "user_id"
+    t.index ["product_id"], name: "index_contracts_on_product_id"
+    t.index ["user_id"], name: "index_contracts_on_user_id"
   end
 
   create_table "coverages", force: :cascade do |t|
@@ -36,6 +40,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_154324) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "contract_id"
+    t.index ["contract_id"], name: "index_coverages_on_contract_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -43,6 +49,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_154324) do
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_products_on_company_id"
   end
 
   create_table "users", force: :cascade do |t|

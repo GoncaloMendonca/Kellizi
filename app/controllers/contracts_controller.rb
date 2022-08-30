@@ -1,6 +1,6 @@
 class ContractsController < ApplicationController
   def index
-    @contract = Contract.all
+    @contracts = Contract.all
   end
 
   def show
