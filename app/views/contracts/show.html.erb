@@ -6,7 +6,7 @@
     </div>
 
 <%= link_to @contract.pdf_certificate.filename, rails_blob_path(@contract.pdf_certificate, disposition: 'attachment') %>
-    <h2><%= @contract.price %></h2>
+    <h2>Price:<%= @contract.price %> €</h2>
 
     <h2><%= @contract.product.company.name %></h2>
 <hr>
