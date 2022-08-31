@@ -32,7 +32,7 @@ class ContractsController < ApplicationController
 
   def update
     if @contract.update(contract_params)
-      redirect_to contract_path(@contract), notice: "Contract was updated"
+      redirect_to contracts_path, notice: "Contract was updated"
     else
       render :edit
     end
@@ -49,7 +49,7 @@ class ContractsController < ApplicationController
     params.require(:contract).permit(
       :price, :source, :starts_at, :ends_at, :status, :created_at,
       :updated_at, :pdf_contract, :pdf_certificate,
-      :company_id, :product_id, :active, :starts_at
+      :company_id, :product_id, :active
     )
   end
 

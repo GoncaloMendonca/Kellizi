@@ -19,7 +19,6 @@
 .rounded-border {
   background-color: white;
   border-radius: 5px;
-  width: 200px;
   text-align: center;
   padding: 5px;
 }
@@ -30,6 +29,7 @@
 
 .gray {
   background-color: rgba(96, 93, 93, 0.734);
+  color: $white;
 }
 
 .insurance-card .img {
