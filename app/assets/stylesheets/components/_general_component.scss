@@ -13,3 +13,13 @@
 //   width: 50%;
 //   padding: 10px;
 // }
+
+.fa-solid {
+  font-size: 50px;
+  animation: flow 10s ease-in-out infinite;
+  background: linear-gradient($blue, $purple);
+  background-size: 300%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
