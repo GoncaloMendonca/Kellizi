@@ -17,7 +17,7 @@
               <%= f.input :pdf_certificate, as: :file %>
               <%= f.button :button, class: 'button' %>
             <% end %>
-          <%= link_to "<-Back", contracts_path %>
+          <%= link_to "<-Back", contract_path(@contract.id) %>
         </div>
     </div>
 </div>
