@@ -31,8 +31,9 @@ class ContractsController < ApplicationController
   end
 
   def update
+   @contract = Contract.find_by(id: params[:id])
     if @contract.update(contract_params)
-      redirect_to contracts_path, notice: "Contract was updated"
+      redirect_to contract_path(@contract.id), notice: "Contract was updated"
     else
       render :edit
     end
