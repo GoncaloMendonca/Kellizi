@@ -1,10 +1,14 @@
 <div class="container">
   <div class="row">
     <% Product.all.each do |product| %>
-      <div class="col-lg-2 col-md-3 col-sm-4">
-        <%# <img src="" alt=""> %>
-        <%= product.category %>
-      </div>
+      <div class="col-lg-3 col-md-4 col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <img src="" alt="" class="card-img-top">
+            <%= product.category %>
+          </div>
+        </div>
+    </div>
     <% end %>
 
   </div>
