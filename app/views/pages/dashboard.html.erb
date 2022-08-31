@@ -3,6 +3,7 @@
     <% Category.all.each do |category| %>
       <div class="col-lg-3 col-md-4 col-sm-4">
         <div class="card">
+        <%= link_to "Your portfolio", contracts_path %>
           <div class="card-body">
             <%= image_tag("categories/#{category.name}.png", class: "card-img-top") %>
             <%= category.name %>
@@ -12,4 +13,3 @@
     <% end %>
   </div>
 </div>
-<%# <%= link_to product.category, contracts_path(category: product.category) %> %>
