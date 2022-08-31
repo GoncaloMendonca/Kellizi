@@ -1,0 +1,16 @@
+.accordion-button:hover {
+  background-color: #c471ed7d;
+  color: black;
+  font-weight: bold;
+  transition: background 0.75s ease;
+}
+
+.accordion-button:not(.collapsed) {
+  background: #7293f7;
+  color: black;
+  font-weight: bold;
+}
+
+.accordion-button:focus {
+  box-shadow: none
+}
