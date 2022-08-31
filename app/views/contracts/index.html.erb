@@ -1,8 +1,7 @@
 <div class="container">
   <h1>List of my contracts</h1>
-
-      <div class="nav-search">
-        <div class="search">
+  <div class="nav-search">
+    <div class="search">
           <%= form_with url: contracts_path, method: :get, class: "d-flex" do %>
             <%= text_field_tag :query,
               params[:query],
