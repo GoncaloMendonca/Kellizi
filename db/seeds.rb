@@ -11,7 +11,7 @@ require 'faker'
 # User.destroy_all
 
 puts 'Creating 5 fake users...'
-5.times do |x|
+1.times do |x|
   User.create!(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 6)
