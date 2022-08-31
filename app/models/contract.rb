@@ -8,4 +8,11 @@ class Contract < ApplicationRecord
 
   has_many :coverages
   enum :source, { work: 0, personal: 1 }
+
+  include PgSearch::Model
+  pg_search_scope :search_by_company_and_product,
+  against: [ :product_id.name, :company_id.name ],
+  using: {
+    tsearch: { prefix: true }
+  }
 end
