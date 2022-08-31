@@ -11,7 +11,11 @@ class Contract < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_company_and_product,
-  against: [ :product_id.name, :company_id.name ],
+  # against: [ :title, :synopsis ],
+  associated_against: {
+    company: [:name],
+    product: [:name],
+  },
   using: {
     tsearch: { prefix: true }
   }
