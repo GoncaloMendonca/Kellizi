@@ -16,25 +16,27 @@
       </div>
 
   <% @contracts.each do |contract| %>
-    <div class="insurance-card">
+
+    <div class="insurance-card p-2">
       <%= link_to "Details", contract_path(contract), class: "link" %>
+
       <div class="row">
-        <div class="col-3 p-2">
+        <div class="col-3">
           <img src="point-interrogation-2.jpeg" alt="logo insurance" class="rounded-square">
         </div>
-        <div class="col-6 p-2">
+        <div class="col-6">
           <h1><%= contract.product.name %></h1>
           <h2><%= contract.product.company.name %></h2>
           <h2><%= contract.price %></h2>
         </div>
-        <div class="col-3 p-2">
+        <div class="col-3">
           <% if contract.active %>
-            <h3 class="rounded-border pink">Active</h3>
+            <h3 class="rounded-border pink mx-3">Active</h3>
           <% else %>
-            <h3 class="rounded-border gray">Inactive</h3>
+            <h3 class="rounded-border gray mx-3">Inactive</h3>
           <% end %>
-          <h3 class="rounded-border"><%= contract.ends_at %></h3>
-          <h3 class="rounded-border"><%= contract.source %></h3>
+          <h3 class="rounded-border mx-3"><%= contract.ends_at %></h3>
+          <h3 class="rounded-border mx-3"><%= contract.source %></h3>
         </div>
       </div>
       <%= link_to "Edit Contract", edit_contract_path(contract), class: "button"  %>
