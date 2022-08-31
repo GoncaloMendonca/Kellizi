@@ -5,7 +5,7 @@
     <h2><%= @contract.product.name %></h2>
     </div>
 
-<a href="./directory/yourfile.pdf" download="newfilename">Download the pdf</a>
+<%= link_to @contract.pdf_certificate.filename, rails_blob_path(@contract.pdf_certificate, disposition: 'attachment') %>
     <h2><%= @contract.price %></h2>
 
     <h2><%= @contract.product.company.name %></h2>
