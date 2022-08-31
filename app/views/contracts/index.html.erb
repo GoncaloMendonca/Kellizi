@@ -1,8 +1,25 @@
 <div class="container">
   <h1>List of my insurance</h1>
 
+      <div class="nav-search">
+        <div class="search">
+          <%= form_with url: contracts_path, method: :get, class: "d-flex" do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Look for a Contract"
+            %>
+            <%= button_tag "Search", class: "button" %>
+          <% end %>
+        </div>
+          <%= link_to "New Contract", new_contract_path, class: "button"  %>
+      </div>
+
   <% @contracts.each do |contract| %>
+
     <div class="insurance-card p-2">
+      <%= link_to "Details", contract_path(contract), class: "link" %>
+
       <div class="row">
         <div class="col-3">
           <img src="point-interrogation-2.jpeg" alt="logo insurance" class="rounded-square">
@@ -22,6 +39,8 @@
           <h3 class="rounded-border mx-3"><%= contract.source %></h3>
         </div>
       </div>
+      <%= link_to "Edit Contract", edit_contract_path(contract), class: "button"  %>
+      <%= link_to "Delete Contract", contract_path(contract), class: "button", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this contract?"} %>
     </div>
   <% end %>
 </div>
