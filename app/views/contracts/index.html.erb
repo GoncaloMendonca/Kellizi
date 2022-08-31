@@ -2,21 +2,21 @@
   <h1>List of my insurance</h1>
 
   <% @contracts.each do |contract| %>
-    <div class="card-rounded-light-gray">
+    <div class="insurance-card">
       <div class="row">
-        <div class="col-3">
-          <img src="" alt="logo insurance" class="rounded-square">
+        <div class="col-3 p-2">
+          <img src="point-interrogation-2.jpeg" alt="logo insurance" class="rounded-square">
         </div>
-        <div class="col-6">
-          <h1 class=""><%= contract.product.name %></h1>
-          <h2 class=""><%= contract.product.company.name %></h2>
-          <h2 class=""><%= contract.price %></h2>
+        <div class="col-6 p-2">
+          <h1><%= contract.product.name %></h1>
+          <h2><%= contract.product.company.name %></h2>
+          <h2><%= contract.price %></h2>
         </div>
-        <div class="col-3">
+        <div class="col-3 p-2">
           <% if contract.active %>
-            <h3 class="rounded-pink"><%= contract.active %></h3>
+            <h3 class="rounded-border pink">Active</h3>
           <% else %>
-            <h3 class="rounded-dark-gray"><%= contract.active %></h3>
+            <h3 class="rounded-border gray">Inactive</h3>
           <% end %>
           <h3 class="rounded-border"><%= contract.ends_at %></h3>
           <h3 class="rounded-border"><%= contract.source %></h3>

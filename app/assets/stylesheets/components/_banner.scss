@@ -2,7 +2,7 @@ body {
   margin:0;
 }
 
-h1 {
+.inner-header h1 {
   font-family: $headers-font;
   font-style: 150%;
   font-weight:600;
@@ -11,12 +11,12 @@ h1 {
   text-align: left;
 }
 
-p {
-  font-family: $body-font;
-  letter-spacing: 1px;
-  font-size:14px;
-  color: #333333;
-}
+// p {
+//   font-family: $body-font;
+//   letter-spacing: 1px;
+//   font-size:14px;
+//   color: #333333;
+// }
 
 .header {
   position:relative;
