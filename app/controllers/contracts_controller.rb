@@ -2,7 +2,11 @@ class ContractsController < ApplicationController
   before_action :set_contract, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contracts = Contract.all
+    if params[:query].present?
+      @contracts = Contract.search_by_company_and_product(params[:query])
+    else
+      @contracts = Contract.all
+    end
   end
 
   def show
@@ -45,7 +49,7 @@ class ContractsController < ApplicationController
     params.require(:contract).permit(
       :price, :source, :starts_at, :ends_at, :status, :created_at,
       :updated_at, :pdf_contract, :pdf_certificate,
-      :company_id, :product_id, :active, :start_at
+      :company_id, :product_id, :active, :starts_at
     )
   end
 

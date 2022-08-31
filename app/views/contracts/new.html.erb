@@ -11,7 +11,7 @@
               <%= f.input :price, as: :integer %>
               <%= f.input :source, as: :select, collection: Contract.sources.keys %>
               <p>Activity Status <%= f.input :active, as: :radio_buttons %></p>
-              <%= f.input :start_at, as: :date %>
+              <%= f.input :starts_at, as: :date %>
               <%= f.input :ends_at, as: :date %>
               <%= f.input :pdf_contract, as: :file %>
               <%= f.input :pdf_certificate, as: :file %>
