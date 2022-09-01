@@ -2,26 +2,33 @@ class ContractsController < ApplicationController
   before_action :set_contract, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contracts = Contract.joins(
-      "INNER JOIN products ON products.id = contracts.product_id AND products.category = '#{params[:category]}'"
-    )
-    if params[:query].present?
-      @contracts = Contract.where(user: current_user).search_by_company_and_product(params[:query])
+    if params[:category].present?
+      @contracts = policy_scope(Contract).joins(
+        "INNER JOIN products ON products.id = contracts.product_id
+        JOIN categories ON categories.id = products.category_id
+        AND categories.name = '#{params[:category]}'"
+      )
+    elsif params[:query].present?
+      @contracts = policy_scope(Contract).search_by_company_and_product(params[:query])
     else
-      @contracts = Contract.where(user: current_user).all
+      @contracts = policy_scope(Contract)
     end
   end
 
   def show
+    authorize @contract
   end
 
   def new
     @contract = Contract.new
+    authorize @contract
   end
 
   def create
     @contract = Contract.new(contract_params)
     @contract.user = current_user
+
+    authorize @contract
 
     if @contract.save
       redirect_to contracts_path
@@ -31,6 +38,7 @@ class ContractsController < ApplicationController
   end
 
   def edit
+    authorize @contract
   end
 
   def update
@@ -40,11 +48,14 @@ class ContractsController < ApplicationController
     else
       render :edit
     end
+   authorize @contract
   end
 
   def destroy
     @contract.destroy
     redirect_to contracts_path, status: :see_other
+
+    authorize @contract
   end
 
   private
