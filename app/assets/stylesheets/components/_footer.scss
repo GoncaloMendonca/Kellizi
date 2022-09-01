@@ -19,6 +19,7 @@
   display: flex;
   justify-content: center;
   padding: 2px;
+  margin: 0;
 }
 
 .footer li h5 {
@@ -33,9 +34,9 @@
 
 .footer h5 {
   color: white;
-  font-size: 10px;
-  font-weight: lighter;
-  padding: 15px;
+  font-size: 20px;
+  text-align: end;
+  padding-right: 30px;
 }
 
 .page-content {
