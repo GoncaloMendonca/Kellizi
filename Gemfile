@@ -68,6 +68,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem "byebug"
 end
 
 group :test do
@@ -79,5 +80,6 @@ end
 
 gem 'faker'
 gem "pg_search"
+gem "pundit"
 
 gem "dotenv-rails", groups: [:development, :test]

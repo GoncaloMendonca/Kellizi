@@ -20,6 +20,27 @@ body {
 //   color: #333333;
 // }
 
+.box1 {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.topcontainer {
+  display: flex;
+}
+
+.topcontainer-left {
+  float: left;
+  width: 50%;
+}
+
+.topcontainer-right {
+  float: right;
+  width: 50%;
+  text-align: -webkit-right;
+  padding:10px
+}
+
 .float-child {
   width: 50%;
   float: left;
