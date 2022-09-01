@@ -9,7 +9,9 @@ body {
   letter-spacing: 2px;
   font-size:70px;
   text-align: left;
+  text-shadow: 1px 1px 5px black
 }
+
 
 // p {
 //   font-family: $body-font;
@@ -18,12 +20,47 @@ body {
 //   color: #333333;
 // }
 
+.float-child {
+  width: 50%;
+  float: left;
+  padding: 20px;
+}
+
+.left-card {
+  margin-left: 200px;
+  margin-top: 50px;
+}
+
+.right-card {
+  margin-right: 200px;
+  margin-top: 100px;
+}
+
+.landing-button {
+  margin-top: 50px;
+}
+
 .header {
   position:relative;
   text-align:center;
-  background: linear-gradient(60deg, $purple 0%, $blue 100%);
+	background: linear-gradient(60deg, $purple, $blue);
+ /*  animation: gradient 12s ease infinite; */
+/*   background-size: 400% 400%; */
   color:white;
 }
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 .logo {
   width:50px;
   fill:white;
