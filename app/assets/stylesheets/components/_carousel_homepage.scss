@@ -1,0 +1,8 @@
+.carousel-container {
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-image: linear-gradient(130deg, $purple, $blue);
+}
