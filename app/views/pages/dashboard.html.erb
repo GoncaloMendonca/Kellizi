@@ -2,36 +2,36 @@
   <div class="row">
     <% Category.all.each do |category| %>
       <div class="col-lg-3 col-md-4 col-sm-4">
-        <div class="card">
-        <%= link_to "Your portfolio", contracts_path %>
-          <div class="card-body">
+        <div class="dashboard-card text-center mb-3 p-2">
+        <%# <%= link_to contracts_path(category), class: "link" do %>
+          <div class="card-img-top">
             <% if category.name == "House" %>
-              <i class="fa-solid fa-house-chimney-user"></i>
+              <i class="fa-solid fa-house-chimney-user dashboard_icons"></i>
             <% elsif category.name == "Business" %>
-              <i class="fa-solid fa-briefcase"></i>
+              <i class="fa-solid fa-briefcase dashboard_icons"></i>
             <% elsif category.name == "Electronics" %>
-              <i class="fa-solid fa-washing-machine"></i>
+              <i class="fas fa-gamepad dashboard_icons"></i>
             <% elsif category.name == "Family" %>
-              <i class="fa-solid fa-people-roof"></i>
+              <i class="fa-solid fa-people-roof dashboard_icons"></i>
             <% elsif category.name == "Healthcare" %>
-              <i class="fa-solid fa-briefcase-medical"></i>
+              <i class="fa-solid fa-briefcase-medical dashboard_icons"></i>
             <% elsif category.name == "Legal Insurance" %>
-              <i class="fa-solid fa-file-contract"></i>
+              <i class="fa-solid fa-file-contract dashboard_icons"></i>
             <% elsif category.name == "Mobility" %>
-              <i class="fa-solid fa-car-burst"></i>
+              <i class="fa-solid fa-car-burst dashboard_icons"></i>
             <% elsif category.name == "Mortgage" %>
-            <i class="fa-solid fa-building-columns"></i>
+            <i class="fa-solid fa-building-columns dashboard_icons"></i>
             <% elsif category.name == "Travel" %>
-              <i class="fa-solid fa-map-location-dot"></i>
-            <% else %>
-              <i class="fa-solid fa-otter"></i>
+              <i class="fa-solid fa-map-location-dot dashboard_icons"></i>
+            <% elsif category.name == "Other" %>
+              <i class="fa-solid fa-otter dashboard_iconsp"></i>
             <% end %>
-            <%= category.name %>
+            <div class="card-body">
+              <span class="mt-3"><%= category.name%></span>
+            </div>
           </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
-<%# <%= link_to product.category, contracts_path(category: product.category) %>
-
