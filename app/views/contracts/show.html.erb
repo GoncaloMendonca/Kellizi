@@ -2,12 +2,15 @@
 <div class="container">
   <h1>Contracts Show Page</h1>
 <div class="insurance-card p-2">
+  <div class="show-container">
+ <%#  container for top %>
+<div class="topcontainer">
+<div class="topcontainer-left">
     <div class="text1">
     <h1><%= @contract.product.name %></h1>
     <h2><%= @contract.product.company.name %></h2>
     </div>
 <h2>Price: <%= @contract.price %> €</h2>
-
 <h2>
   Contract pdf:
   <% if  @contract.pdf_contract.attached? %>
@@ -17,6 +20,7 @@
   <% end %>
 </h2>
 
+
 <h2>
   Contract certificate:
   <% if  @contract.pdf_contract.attached? %>
@@ -25,7 +29,21 @@
     N/A
   <% end %>
 </h2>
-
+</div>
+<div class="topcontainer-right">
+    <div class="box1">
+      <% if @contract.active %>
+        <h3 class="rounded-border pink mx-3">Active</h3>
+      <% else %>
+        <h3 class="rounded-border gray mx-3">Inactive</h3>
+      <% end %>
+        <h3 class="rounded-border mx-3"><%= @contract.ends_at %></h3>
+        <h3 class="rounded-border mx-3"><%= @contract.source %></h3>
+    </div>
+    </div>
+  </div>
+   <%#  end of container for top%>
+</div>
 <hr>
 
 <%# Accordion %>
@@ -86,15 +104,6 @@
       <%= link_to "Edit Contract", edit_contract_path(@contract), class: "button"  %>
       <%= link_to "Delete Contract", contract_path(@contract), class: "button", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this contract?"} %>
   <hr>
-    <div class="col-3">
-      <% if @contract.active %>
-        <h3 class="rounded-border pink mx-3">Active</h3>
-      <% else %>
-        <h3 class="rounded-border gray mx-3">Inactive</h3>
-      <% end %>
-        <h3 class="rounded-border mx-3"><%= @contract.ends_at %></h3>
-        <h3 class="rounded-border mx-3"><%= @contract.source %></h3>
-    </div>
 <div class="back-button">
 <%= link_to "<-Back", contracts_path %>
 </div>
