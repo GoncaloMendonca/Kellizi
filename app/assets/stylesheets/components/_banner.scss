@@ -9,7 +9,7 @@ body {
   letter-spacing: 2px;
   font-size:70px;
   text-align: left;
-  text-shadow: 1px 1px 5px black
+  // text-shadow: 1px 1px 5px black
 }
 
 
@@ -19,6 +19,27 @@ body {
 //   font-size:14px;
 //   color: #333333;
 // }
+
+.box1 {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.topcontainer {
+  display: flex;
+}
+
+.topcontainer-left {
+  float: left;
+  width: 50%;
+}
+
+.topcontainer-right {
+  float: right;
+  width: 50%;
+  text-align: -webkit-right;
+  padding:10px
+}
 
 .float-child {
   width: 50%;

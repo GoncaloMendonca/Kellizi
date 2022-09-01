@@ -24,7 +24,7 @@ end
 
 users = User.all
 
-categories = ["House", "Mobility", "Travel", "Healthcare", "Family", "Electronics", "Business", "Mortgage", "Legal Insurance" ]
+categories = ["House", "Mobility", "Travel", "Healthcare", "Family", "Electronics", "Business", "Mortgage", "Legal Insurance", "Other" ]
 
 categories.each do |category|
   Category.create!(name: category)
