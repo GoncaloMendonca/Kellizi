@@ -1,20 +1,20 @@
 <div class="panel panel-default">
-    <div class="create-contract-container">
-        Create your contract
+    <div class="container">
+        <h1>Create your contract</h1>
     </div>
     <div class="panel-body">
       <div class="container">
-        <div class="row">
-            <%= simple_form_for @contract, data: {turbo: false} do |f| %>
-              <%= f.association :company %>
-              <%= f.association :product %>
-              <%= f.input :price, as: :integer %>
-              <%= f.input :source, as: :select, collection: Contract.sources.keys %>
+        <div class="row" data-controller="change-color">
+            <%= simple_form_for @contract, data: {turbo: false, } do |f| %>
+              <%= f.association :company, input_html: { class: "form-rounded" }, label: "Company name", data: { change_color_target: "input", action: "change->change-color#update" } %>
+              <%= f.association :product, input_html: { class: "form-rounded" }, label: "Product name", data: {change_color_target:"input", action:"change->change-color#update"}%>
+              <%= f.input :price, input_html: { class: "form-rounded" }, as: :integer, data: {change_color_target:"input", action:"change->change-color#update"} %>
+              <%= f.input :source, input_html: { class: "form-rounded" },  as: :select, collection: Contract.sources.keys, data: {change_color_target:"input", action:"change->change-color#update"} %>
               <p>Activity Status <%= f.input :active, as: :radio_buttons %></p>
-              <%= f.input :starts_at, as: :date %>
-              <%= f.input :ends_at, as: :date %>
-              <%= f.input :pdf_contract, as: :file %>
-              <%= f.input :pdf_certificate, as: :file %>
+              <%= f.input :starts_at, input_html: { class: "form-rounded" }, as: :date , data: {change_color_target:"input", action:"change->change-color#update"}%>
+              <%= f.input :ends_at, input_html: { class: "form-rounded" }, as: :date , data: {change_color_target:"input", action:"change->change-color#update"}%>
+              <%= f.input :pdf_contract, input_html: { class: "form-rounded" }, as: :file , data: {change_color_target:"input", action:"change->change-color#update"}%>
+              <%= f.input :pdf_certificate, input_html: { class: "form-rounded" }, as: :file , data: {change_color_target:"input", action:"change->change-color#update"}%>
               <%= f.button :button, class: 'button' %>
             <% end %>
           <%= link_to "<-Back", contracts_path %>

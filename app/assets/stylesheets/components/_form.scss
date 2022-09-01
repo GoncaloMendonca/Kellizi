@@ -1,0 +1,10 @@
+.form-rounded {
+  border-radius: 10px;
+  background-color: $purple;
+  opacity:0.1;
+  border-color: none;
+  &:hover {
+  background-color:$white;
+  }
+  
+}
