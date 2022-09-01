@@ -7,8 +7,11 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 
-# Company.destroy_all
-# User.destroy_all
+Contract.destroy_all
+Company.destroy_all
+User.destroy_all
+Category.destroy_all
+Product.destroy_all
 
 puts 'Creating 5 fake users...'
 1.times do |x|
@@ -20,6 +23,12 @@ puts 'Creating 5 fake users...'
 end
 
 users = User.all
+
+categories = ["House", "Mobility", "Travel", "Healthcare", "Family", "Electronics", "Business", "Mortgage", "Legal Insurance" ]
+
+categories.each do |category|
+  Category.create!(name: category)
+end
 
 2.times do
   Company.create!(
@@ -34,7 +43,7 @@ Company.all.each do |company|
   2.times do
     product = Product.new(
       name: Faker::Company.name,
-      category: Faker::Dessert.variety,
+      category: Category.all.sample,
       company:
     )
 
@@ -52,6 +61,8 @@ Company.all.each do |company|
       user: users.sample,
       company:
     )
+
+
   end
 end
 

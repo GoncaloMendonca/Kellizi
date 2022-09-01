@@ -1,15 +1,37 @@
 <div class="container">
   <div class="row">
-    <% Product.all.each do |product| %>
+    <% Category.all.each do |category| %>
       <div class="col-lg-3 col-md-4 col-sm-4">
         <div class="card">
+        <%= link_to "Your portfolio", contracts_path %>
           <div class="card-body">
-            <img src="" alt="" class="card-img-top">
-            <%= product.category %>
+            <% if category.name == "House" %>
+              <i class="fa-solid fa-house-chimney-user"></i>
+            <% elsif category.name == "Business" %>
+              <i class="fa-solid fa-briefcase"></i>
+            <% elsif category.name == "Electronics" %>
+              <i class="fa-solid fa-washing-machine"></i>
+            <% elsif category.name == "Family" %>
+              <i class="fa-solid fa-people-roof"></i>
+            <% elsif category.name == "Healthcare" %>
+              <i class="fa-solid fa-briefcase-medical"></i>
+            <% elsif category.name == "Legal Insurance" %>
+              <i class="fa-solid fa-file-contract"></i>
+            <% elsif category.name == "Mobility" %>
+              <i class="fa-solid fa-car-burst"></i>
+            <% elsif category.name == "Mortgage" %>
+            <i class="fa-solid fa-building-columns"></i>
+            <% elsif category.name == "Travel" %>
+              <i class="fa-solid fa-map-location-dot"></i>
+            <% else %>
+              <i class="fa-solid fa-otter"></i>
+            <% end %>
+            <%= category.name %>
           </div>
         </div>
-    </div>
+      </div>
     <% end %>
-
   </div>
 </div>
+<%# <%= link_to product.category, contracts_path(category: product.category) %>
+
