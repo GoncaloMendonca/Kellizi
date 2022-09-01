@@ -3,7 +3,7 @@
     <% Category.all.each do |category| %>
       <div class="col-lg-3 col-md-4 col-sm-4">
         <div class="card">
-          <%= link_to "Your portfolio", contracts_path %>
+          <%= link_to "Your portfolio", contracts_path(category: category.name) %>
           <div class="card-body">
             <% if category.name == "House" %>
               <i class="fa-solid fa-house-chimney-user"></i>

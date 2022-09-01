@@ -2,10 +2,13 @@ class ContractsController < ApplicationController
   before_action :set_contract, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @contracts = Contract.joins(
-    #   "INNER JOIN products ON products.id = contracts.product_id AND products.category = '#{params[:category]}'"
-    # )
-    if params[:query].present?
+    if params[:category].present?
+      @contracts = Contract.joins(
+        "INNER JOIN products ON products.id = contracts.product_id
+        JOIN categories ON categories.id = products.category_id
+        AND categories.name = '#{params[:category]}'"
+      )
+    elsif params[:query].present?
       @contracts = Contract.where(user: current_user).search_by_company_and_product(params[:query])
     else
       @contracts = Contract.where(user: current_user).all
