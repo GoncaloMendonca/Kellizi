@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ChangeColorController from "./change_color_controller"
+application.register("change-color", ChangeColorController)
+
 import CardsController from "./cards_controller"
 application.register("cards", CardsController)
 
