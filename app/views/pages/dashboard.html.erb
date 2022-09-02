@@ -4,7 +4,7 @@
       <div class="col-lg-3 col-md-4 col-sm-4 mt-3">
         <div class="dashboard-card text-center mb-3 p-4">
         <%= link_to contracts_path(category: category.name) do %>
-          <div class="card-img-top">
+          <div class="card-img-top pb-4">
             <% if category.name == "House" %>
               <i class="fa-solid fa-house-chimney-user dashboard_icons"></i>
             <% elsif category.name == "Business" %>
@@ -26,8 +26,8 @@
             <% elsif category.name == "Other" %>
               <i class="fa-solid fa-otter dashboard_icons"></i>
             <% end %>
-            <div class="card-body">
-              <span class="categories mt-6"><%= category.name%></span>
+            <div class="card-body mt-6">
+              <span id="categories"><%= category.name%></span>
             </div>
           </div>
           <% end %>
