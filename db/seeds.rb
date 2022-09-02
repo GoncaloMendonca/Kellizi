@@ -13,57 +13,83 @@ User.destroy_all
 Category.destroy_all
 Product.destroy_all
 
+users = [
+  { email: "louis@kellizi.xyz", password: "123456" },
+  { email: "auriane@kellizi.xyz", password: "123456" },
+  { email: "goncalo@kellizi.xyz", password: "123456" }
+]
+
 puts 'Creating 5 fake users...'
-1.times do |x|
+users.each do |user|
   User.create!(
-    email: Faker::Internet.email,
-    password: Faker::Internet.password(min_length: 6)
+    email: user[:email],
+    password: user[:password]
   )
-  puts "User #{x} created."
+  puts "User #{user[:email]} created."
 end
 
 users = User.all
 
-categories = ["House", "Mobility", "Travel", "Healthcare", "Family", "Electronics", "Business", "Mortgage", "Legal Insurance", "Other" ]
+categories = [
+  "House", "Mobility", "Travel", "Healthcare", "Family", "Electronics", "Business", "Mortgage",
+  "Legal Insurance", "Other"
+]
+
+companies = [
+  "Matmut", "Axa", "Macif", "Stoïk", "Allianz",
+  "GMF", "Aviva", "BNP Paribas Cardif", "Yuzzu", "AG insurance"
+]
 
 categories.each do |category|
   Category.create!(name: category)
+  puts "Category created."
 end
 
-2.times do
-  Company.create!(
-    name: Faker::Company.name,
-    country: Faker::Dessert.variety
-  )
-
+companies.each do |company|
+  Company.create!(name: company)
   puts "Company created."
 end
 
+# products = [
+#   "Housing", "Cyber security", "Car", "Motorbike", "Bike", "Pets", "Child", "Covid",
+#   "Loan", "Card", "Household appliances", "Risky sport abroad", "Emergency repatriation",
+#   "Legal protection"
+# ]
+
+products = [
+  { name: "Car", category: "Mobility" },
+  { name: "Cyber security", category: "Business" },
+  { name: "Emergency repatriation", category: "Travel" },
+  { name: "Pets", category: "Family" },
+  { name: "Covid", category: "Healthcare" }
+]
+
+products.map do |product|
+  product[:category] = Category.find_by(name: product[:category])
+end
+
 Company.all.each do |company|
-  2.times do
-    product = Product.new(
-      name: Faker::Company.name,
-      category: Category.all.sample,
-      company:
-    )
-
-    product.save!
-
+  products.each do |product|
+    Product.create!(name: product[:name], category: product[:category], company:)
     puts "Product created."
+  end
+
+end
+
+User.all.each do |user|
+  5.times do
+    product = Product.all.sample
 
     Contract.create!(
       price: rand(1..100),
       source: [0, 1].sample,
       starts_at: "2021-07-30",
-      ends_at: "2022-07-30",
+      ends_at: "2023-07-30",
       active: [true, false].sample,
       product:,
-      user: users.sample,
-      company:
+      user:,
+      company: product.company, # do we need to store the company id here?
     )
-
-
   end
 end
-
 puts 'Finished!'
