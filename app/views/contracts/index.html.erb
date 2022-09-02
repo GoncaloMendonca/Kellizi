@@ -22,7 +22,7 @@
 
     <% @contracts.each do |contract| %>
       <div class="insurance-card p-2">
-        <%= link_to contract_path(contract) do %>
+        <%= link_to contract_path(contract), class:"link-contract" do %>
         <div class="row">
           <div class="col-3">
             <img src="point-interrogation-2.jpeg" alt="logo insurance" class="rounded-square">
