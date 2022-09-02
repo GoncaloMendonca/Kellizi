@@ -1,7 +1,7 @@
 .dashboard-card {
   border-radius: 15px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  height: 180px;
+  text-decoration: none;
   &:hover{
     background-color: #ecb9ed6e ;
     color: $dark-blue;
@@ -12,4 +12,8 @@
   padding-top: 20px;
   font-weight: bold;
   font-size: 15px;
+}
+
+.categories {
+  text-decoration: none;
 }

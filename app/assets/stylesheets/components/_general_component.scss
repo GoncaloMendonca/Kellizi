@@ -17,8 +17,8 @@
 .dashboard_icons{
   font-size: 100px;
   animation: flow 10s ease-in-out infinite;
-  background: linear-gradient($blue, $purple);
-  background-size: 300%;
+  background: $gradient;
+  background-size: 100%;
   -webkit-background-clip: text;
           background-clip: text;
   -webkit-text-fill-color: transparent;
