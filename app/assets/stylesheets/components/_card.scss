@@ -4,16 +4,17 @@
   text-decoration: none;
   &:hover{
     background-color: #ecb9ed6e ;
-    color: $dark-blue;
+    color: #C471ED;
   }
 }
 
-span #categories {
+#categories {
   text-decoration: none;
-  font-weight: bold;
   font-size: 15px;
   margin-top: 20px;
-}
-.a{
-  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  &:hover {
+    color: #C471ED;
+  }
 }
