@@ -28,7 +28,7 @@ users.each do |user|
   puts "User #{user[:email]} created."
 end
 
-users = User.all
+# users = User.all
 
 categories = [
   "House", "Mobility", "Travel", "Healthcare", "Family", "Electronics", "Business", "Mortgage",
@@ -58,10 +58,17 @@ end
 
 products = [
   { name: "Car", category: "Mobility" },
+  { name: "Motorbike", category: "Mobility" },
+  { name: "Bike", category: "Mobility" },
+  { name: "Scooter", category: "Mobility" },
+  { name: "Household appliances", category: "Mortgage" },
+  { name: "Loan", category: "Mortgage" },
   { name: "Cyber security", category: "Business" },
   { name: "Emergency repatriation", category: "Travel" },
   { name: "Pets", category: "Family" },
-  { name: "Covid", category: "Healthcare" }
+  { name: "Covid", category: "Healthcare" },
+  { name: "Legal protection", category: "Legal Insurance" },
+  { name: "Housing", category: "House" }
 ]
 
 products.map do |product|
