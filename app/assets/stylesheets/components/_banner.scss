@@ -3,13 +3,13 @@ body {
 }
 
 .inner-header h1 {
-  font-family: $headers-font;
   font-style: 150%;
   font-weight:600;
   letter-spacing: 2px;
   font-size:70px;
   text-align: left;
   // text-shadow: 1px 1px 5px black
+  padding-left: 20px;
 }
 
 
@@ -42,20 +42,20 @@ body {
 }
 
 .float-child {
-  width: 50%;
+  // width: 50%;
   float: left;
   padding: 20px;
 }
 
-.left-card {
-  margin-left: 200px;
-  margin-top: 50px;
-}
+// .left-card {
+//   margin-left: 200px;
+//   margin-top: 50px;
+// }
 
-.right-card {
-  margin-right: 200px;
-  margin-top: 100px;
-}
+// .right-card {
+//   margin-right: 200px;
+//   margin-top: 100px;
+// }
 
 .landing-button {
   margin-top: 50px;
@@ -95,7 +95,7 @@ body {
   width:100%;
   margin: 0;
   padding: 0;
-  padding-top: 40%;
+  padding-top: 20%;
 }
 
 .flex { /*Flexbox for containers*/
