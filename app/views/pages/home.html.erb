@@ -12,69 +12,71 @@
         </div>
       </div>
 
-      <%# Log in  %>
-      <div class="col-12 col-lg-5">
-        <div class="section pb-5 pt-5 pt-sm-2 text-center">
-          <h6 class="mb-0 pb-3 pt-5"><span>Log In </span><span>Sign Up</span></h6>
-          <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" icon="fa-solid fa-arrow-up-left" />
-          <label for="reg-log"></label>
-          <div class="card-3d-wrap mx-auto">
-            <div class="card-3d-wrapper">
-              <div class="card-front">
-                <div class="center-wrap">
-                  <div class="section text-center">
-                    <h4 class="mb-4 pb-3">Log In</h4>
-                    <div class="form-group">
-                      <%= simple_form_for(@resource, as: :user, url: session_path(:user), data: { turbo: :false }) do |f| %>
+      <% if !user_signed_in? %>
+        <%# Log in  %>
+        <div class="col-12 col-lg-5">
+          <div class="section pb-5 pt-5 pt-sm-2 text-center">
+            <h6 class="mb-0 pb-3 pt-5"><span>Log In </span><span>Sign Up</span></h6>
+            <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" icon="fa-solid fa-arrow-up-left" />
+            <label for="reg-log"></label>
+            <div class="card-3d-wrap mx-auto">
+              <div class="card-3d-wrapper">
+                <div class="card-front">
+                  <div class="center-wrap">
+                    <div class="section text-center">
+                      <h4 class="mb-4 pb-3">Log In</h4>
+                      <div class="form-group">
+                        <%= simple_form_for(@resource, as: :user, url: session_path(:user), data: { turbo: :false }) do |f| %>
+                        <div class="form-inputs">
+                          <%= f.input :email,
+                            required: false,
+                            autofocus: true,
+                            input_html: { autocomplete: "email" } %>
+                          <%= f.input :password,
+                            required: false,
+                            input_html: { autocomplete: "current-password" } %>
+                        </div>
+
+                        <div class="form-actions">
+                          <%= f.button :submit, "Log in", class:"btn-white" %>
+                        </div>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-back">
+                  <div class="center-wrap">
+                    <div class="section text-center">
+                      <h4 class="mb-4 pb-3">Sign Up</h4>
+                      <%= simple_form_for(@resource, as: :user, url: registration_path(:user), data: { turbo: :false }) do |f| %>
+                      <%= f.error_notification %>
                       <div class="form-inputs">
                         <%= f.input :email,
-                          required: false,
+                          required: true,
                           autofocus: true,
-                          input_html: { autocomplete: "email" } %>
+                          input_html: { autocomplete: "email" }%>
                         <%= f.input :password,
-                          required: false,
-                          input_html: { autocomplete: "current-password" } %>
+                          required: true,
+                          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                          input_html: { autocomplete: "new-password" } %>
+                        <%= f.input :password_confirmation,
+                          required: true,
+                          input_html: { autocomplete: "new-password" } %>
                       </div>
-
                       <div class="form-actions">
-                        <%= f.button :submit, "Log in", class:"btn-white" %>
+                        <%= f.button :submit, "Sign up", class:"btn-white" %>
                       </div>
                       <% end %>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="card-back">
-                <div class="center-wrap">
-                  <div class="section text-center">
-                    <h4 class="mb-4 pb-3">Sign Up</h4>
-                    <%= simple_form_for(@resource, as: :user, url: registration_path(:user), data: { turbo: :false }) do |f| %>
-                    <%= f.error_notification %>
-                    <div class="form-inputs">
-                      <%= f.input :email,
-                        required: true,
-                        autofocus: true,
-                        input_html: { autocomplete: "email" }%>
-                      <%= f.input :password,
-                        required: true,
-                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                        input_html: { autocomplete: "new-password" } %>
-                      <%= f.input :password_confirmation,
-                        required: true,
-                        input_html: { autocomplete: "new-password" } %>
-                    </div>
-                    <div class="form-actions">
-                      <%= f.button :submit, "Sign up", class:"btn-white" %>
-                    </div>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
-      </div>
-      <%# End of Log in %>
+        <%# End of Log in %>
+      <% end %>
     </div>
   </div>
 
