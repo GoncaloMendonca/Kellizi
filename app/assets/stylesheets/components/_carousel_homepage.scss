@@ -1,11 +1,10 @@
 .carousel-container {
-  height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   background-image: linear-gradient(130deg, #c471edad, #009fff99);
-
+  padding: 20px 0px;
 }
 
 /* === Google Font Import - Poppins === */
@@ -20,14 +19,13 @@
 
 .content {
   position: relative;
-  height: 50vh;
+  height: fit-content;
   text-align: center;
   background-color: white;
 }
 
 section{
   position: relative;
-  height: 450px;
   width: 1075px;
   display: flex;
   align-items: center;
