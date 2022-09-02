@@ -13,3 +13,8 @@ $white: #ffffff;
 $blue: #009FFF;
 $dark-blue: #6388F6;
 $purple: #C471ED;
+$gradient: linear-gradient(60deg, $purple, $blue);
+
+.gradient {
+  background: linear-gradient(60deg, $purple, $blue);
+}

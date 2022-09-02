@@ -3,10 +3,10 @@
   margin: auto;
 }
 
-.card .img {
-  height: 50px;
-  width: 100%;
-}
+// .customer-card .img {
+//   height: 50px;
+//   width: 100%;
+// }
 
 // .center {
 //   margin: auto;
@@ -14,12 +14,21 @@
 //   padding: 10px;
 // }
 
-.fa-solid {
-  font-size: 50px;
+.dashboard_icons{
+  font-size: 100px;
   animation: flow 10s ease-in-out infinite;
   background: linear-gradient($blue, $purple);
   background-size: 300%;
   -webkit-background-clip: text;
           background-clip: text;
   -webkit-text-fill-color: transparent;
+  justify-items: center;
+}
+
+.panel-default h1 {
+  color: $white;
+  font-weight: bold;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 40px;
 }

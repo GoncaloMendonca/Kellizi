@@ -9,11 +9,43 @@
   color: $white;
   box-shadow: 0 0 80px #eee;
   border-radius: 15px;
-  display: block;
+  // display: block;
+  text-decoration: none;
 }
 
 .btn-grad:hover {
   background-position: right center; /* change the direction of the change here */
   color: $white;
+  text-decoration: none;
+}
+
+.button .btn-grad {
+  border: none;
+  color: white;
+}
+
+.btn-white{
+  background-color: rgba(255, 255, 255, 0.313);
+  padding: 15px 20px ;
+  border: rgba(255, 255, 255, 0.473) solid 1px;
+  border-radius: 15px;
+  text-decoration: none;
+  &:hover{
+    background-color: rgba(255, 255, 255, 0.6);
+    color: white;
+  }
+}
+
+.btn-gray {
+  background: rgba(132, 130, 130, 0.526);
+  border: rgba(132, 130, 130, 0.726);
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  color: $white;
+  box-shadow: 0 0 80px #eee;
+  border-radius: 15px;
+  // display: block;
   text-decoration: none;
 }
