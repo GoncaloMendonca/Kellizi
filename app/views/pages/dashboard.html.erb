@@ -1,9 +1,14 @@
+<div class="container-fluid gradient">
+  <div class="container panel-default">
+    <h1>My dashboard</h1>
+  </div>
+</div>
 <div class="container">
   <div class="row" style="justify-content: center;">
     <% Category.all.each do |category| %>
       <div class="col-lg-3 col-md-4 col-sm-4 mt-3">
-        <div class="dashboard-card text-center mb-3 p-4">
-          <%= link_to contracts_path(category: category.name) do %>
+        <div class="dashboard-card text-center mb-3 pt-3 px-3">
+        <%= link_to contracts_path(category: category.name) do %>
           <div class="card-img-top pb-4">
             <% if category.name == "House" %>
               <i class="fa-solid fa-house-chimney-user dashboard_icons"></i>
@@ -26,7 +31,7 @@
             <% elsif category.name == "Other" %>
               <i class="fa-solid fa-otter dashboard_icons"></i>
             <% end %>
-            <div class="card-body mt-6">
+            <div class="card-body mt-3">
               <span id="categories"><%= category.name%></span>
             </div>
           </div>

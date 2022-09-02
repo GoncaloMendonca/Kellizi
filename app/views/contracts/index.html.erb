@@ -5,18 +5,18 @@
 </div>
 <div class="container">
   <div class="d-flex", style= "justify-content: space-between">
+    <%= link_to "Back", "/dashboard", class:"btn-grad-light"%>
     <%= link_to "New Contract", new_contract_path, class: "btn-grad-light" %>
-    <%= link_to "Back", "/dashboard", class:"btn-grad-light", style:"margin-left: 21px"%>
   </div>
   <div class="nav-search mt-4">
     <div class="search">
-      <%= form_with url: contracts_path, method: :get, class: "d-flex" do %>
+      <%= form_with url: contracts_path, method: :get, class: "d-flex border-radius-1" do %>
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
           placeholder: "Look for a Contract"
         %>
-        <%= button_tag "Search", class: "button" %>
+        <%= button_tag "Search", class: "btn-gray" %>
       <% end %>
     </div>
 
