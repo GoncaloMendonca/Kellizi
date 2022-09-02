@@ -81,5 +81,6 @@ end
 gem 'faker'
 gem "pg_search"
 gem "pundit"
+gem "cloudinary"
 
 gem "dotenv-rails", groups: [:development, :test]
