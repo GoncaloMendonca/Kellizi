@@ -1,5 +1,5 @@
 .btn-grad {
-  background-image: linear-gradient(to right, $purple 0%, $dark-blue 51%, $blue 100%);
+  background-image: $gradient;
   margin: 10px;
   padding: 15px 45px;
   text-align: center;
@@ -11,12 +11,51 @@
   border-radius: 15px;
   // display: block;
   text-decoration: none;
+  &:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: $white;
+    text-decoration: none;
+  }
 }
 
-.btn-grad:hover {
-  background-position: right center; /* change the direction of the change here */
-  color: $white;
+// .btn-grad-light {
+//   border-radius: 15px; /*1*/
+//   border: 5px solid transparent; /*2*/
+//   background: linear-gradient(60deg,$blue,$purple) border-box; /*3*/
+//   color: $purple;
+//   font-size:15px;
+//   -webkit-mask: /*4*/
+//      linear-gradient(#fff 0 0) padding-box,
+//      linear-gradient(#fff 0 0);
+//   -webkit-mask-composite: xor; /*5'*/
+//           mask-composite: exclude; /*5*/
+//   &:hover {
+//     background-position: right center; /* change the direction of the change here */
+//     color: $white;
+//     text-decoration: none;
+//   }
+// }
+
+.btn-grad-light {
+  position: relative;
+  padding: 15px 25px 15px 25px;
   text-decoration: none;
+  color: $dark-blue;
+  font-size: 15px;
+  font-weight: bold;
+}
+.btn-grad-light::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 15px;
+  padding: 5px;
+  background: $gradient;
+  -webkit-mask:
+     linear-gradient(#fff 0 0) content-box,
+     linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
 }
 
 .button .btn-grad {
@@ -36,16 +75,37 @@
   }
 }
 
+.home-btn-white {
+  width: 19%;
+ }
+
 .btn-gray {
-  background: rgba(132, 130, 130, 0.526);
-  border: rgba(132, 130, 130, 0.726);
-  margin: 10px;
-  padding: 15px 45px;
-  text-align: center;
-  text-transform: uppercase;
-  color: $white;
-  box-shadow: 0 0 80px #eee;
+  background-color: #fff;
+  border: 1px solid #d5d9d9;
   border-radius: 15px;
-  // display: block;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  box-sizing: border-box;
+  color: #343334;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 15px;
+  padding: 3px 15px 3px 15px;
+  position: relative;
+  text-align: center;
   text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.btn-gray:hover {
+  background-color: #f7fafa;
+  color: $purple;
+}
+
+.btn-gray:focus {
+  border-color: $purple;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  outline: 0;
 }

@@ -2,7 +2,7 @@
   <div class="row" style="justify-content: center;">
     <% Category.all.each do |category| %>
       <div class="col-lg-3 col-md-4 col-sm-4 mt-3">
-        <div class="dashboard-card text-center mb-3 p-2">
+        <div class="dashboard-card text-center mb-3 p-4">
         <%= link_to contracts_path(category: category.name) do %>
           <div class="card-img-top">
             <% if category.name == "House" %>
@@ -27,7 +27,7 @@
               <i class="fa-solid fa-otter dashboard_icons"></i>
             <% end %>
             <div class="card-body">
-              <span class="mt-6"><%= category.name%></span>
+              <span class="categories mt-6"><%= category.name%></span>
             </div>
           </div>
           <% end %>
