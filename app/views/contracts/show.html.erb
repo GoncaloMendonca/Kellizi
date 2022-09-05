@@ -1,11 +1,16 @@
+<div class="container-fluid gradient">
+  <div class="container panel-default">
+    <h1>My contract - <%= @contract.product.name %></h1>
+  </div>
+</div>
+
 <div class="page-content">
-<div class="container">
-  <h1>My contract - <%= @contract.product.name %></h1>
-<div class="insurance-card p-2">
-  <div class="show-container">
+  <div class="container">
+    <div class="insurance-card p-2">
+      <div class="show-container">
  <%#  container for top %>
 <div class="topcontainer">
-<div class="topcontainer-left">
+  <div class="topcontainer-left">
     <div class="text1">
     <h1><%= @contract.product.name %></h1>
     <h2><%= @contract.product.company.name %></h2>
