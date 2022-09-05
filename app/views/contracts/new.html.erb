@@ -13,6 +13,7 @@
               <%= f.input :price, input_html: { class: "form-rounded" }, as: :integer, data: {change_color_target:"input", action:"change->change-color#update"} %>
               <%= f.input :source, input_html: { class: "form-rounded" },  as: :select, collection: Contract.sources.keys, data: {change_color_target:"input", action:"change->change-color#update"} %>
               <%= f.input :active, as: :radio_buttons, label:"Insurance active?" %>
+              <%= f.input :starts_at, input_html: { class: "form-rounded" }, as: :date , data: {change_color_target:"input", action:"change->change-color#update"}%>
               <%= f.input :ends_at, input_html: { class: "form-rounded" }, as: :date , data: {change_color_target:"input", action:"change->change-color#update"}%>
               <%= f.input :pdf_contract, input_html: { class: "form-rounded" }, as: :file , data: {change_color_target:"input", action:"change->change-color#update"}%>
               <%= f.input :pdf_certificate, input_html: { class: "form-rounded" }, as: :file , data: {change_color_target:"input", action:"change->change-color#update"}%>
