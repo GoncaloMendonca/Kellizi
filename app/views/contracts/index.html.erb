@@ -21,6 +21,7 @@
           class: "form-control",
           placeholder: "Look for a Contract"
         %>
+        <%= hidden_field_tag :category, @contracts.first&.category&.name %>
         <%= button_tag "Search", class: "btn-gray" %>
       <% end %>
     </div>
