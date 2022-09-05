@@ -46,7 +46,12 @@
             <% end %>
             <h3 class="rounded-border mx-3">Starts at: <%= contract.starts_at.strftime('%d/%b/%Y') %></h3>
             <h3 class="rounded-border mx-3">Ends at: <%= contract.ends_at&.strftime('%d/%b/%Y') %></h3>
+            <% if contract.source %>
             <h3 class="rounded-border mx-3"><%= contract.source %></h3>
+            <% end %>
+            <% unless contract.pdf_contract.attached? %>
+            <p class="rounded-border mx-3 warning-color">Warning no pdf contract</p>
+            <% end %>
           </div>
         </div>
         <%= link_to "", contract_path(contract), class: "fa-solid fa-trash-can", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this contract?"} %>
