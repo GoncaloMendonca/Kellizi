@@ -3,7 +3,20 @@
     <h1>My dashboard</h1>
   </div>
 </div>
+
 <div class="container">
+  <div class="nav-search mt-4">
+    <div class="search">
+      <%= form_with url: contracts_path, method: :get, class: "d-flex border-radius-1" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Look for a Contract"
+        %>
+        <%= button_tag "Search", class: "btn-gray" %>
+      <% end %>
+    </div>
+  </div>
   <div class="row" style="justify-content: center;">
     <% Category.all.each do |category| %>
       <div class="col-lg-3 col-md-4 col-sm-4 mt-3">
