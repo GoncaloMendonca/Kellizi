@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :contracts
   get "dashboard", to: "pages#dashboard"
+  get "myprofile", to: "pages#myprofile"
 end
