@@ -6,6 +6,7 @@ class Contract < ApplicationRecord
   belongs_to :product
   belongs_to :company
 
+  validates :company_id, presence: true
   validates :starts_at, presence: true
 
   has_many :coverages

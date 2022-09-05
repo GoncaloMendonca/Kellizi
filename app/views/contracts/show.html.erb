@@ -41,7 +41,7 @@
                 <h3 class="rounded-border gray mx-3">Inactive</h3>
               <% end %>
               <h3 class="rounded-border mx-3">Starts at: <%= @contract.starts_at.strftime('%d/%b/%Y') %></h3>
-              <h3 class="rounded-border mx-3">Ends at: <%= @contract.ends_at.strftime('%d/%b/%Y') %></h3>
+              <h3 class="rounded-border mx-3">Ends at: <%= @contract.ends_at&.strftime('%d/%b/%Y') %></h3>
               <h3 class="rounded-border mx-3"><%= @contract.source %></h3>
             </div>
           </div>
