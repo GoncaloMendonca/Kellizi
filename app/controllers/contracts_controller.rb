@@ -58,7 +58,7 @@ class ContractsController < ApplicationController
 
   def destroy
     @contract.destroy
-    redirect_to contracts_path, status: :see_other
+    redirect_to contracts_path(category: @contract.product.category.name), status: :see_other
 
     authorize @contract
   end
