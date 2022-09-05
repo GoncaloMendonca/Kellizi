@@ -6,6 +6,8 @@ class Contract < ApplicationRecord
   belongs_to :product
   belongs_to :company
 
+  validates :starts_at, presence: true
+
   has_many :coverages
   enum :source, { work: 0, personal: 1 }
 
