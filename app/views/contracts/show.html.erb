@@ -23,7 +23,7 @@
 
 <h2>
   Contract certificate:
-  <% if  @contract.pdf_contract.attached? %>
+  <% if  @contract.pdf_certificate.attached? %>
     <%= link_to @contract.pdf_certificate.filename, rails_blob_path(@contract.pdf_certificate, disposition: 'attachment') %>
   <% else %>
     N/A
