@@ -19,4 +19,7 @@ class Contract < ApplicationRecord
   using: {
     tsearch: { prefix: true }
   }
+
+  delegate :category, to: :product
+  delegate :company, to: :product
 end

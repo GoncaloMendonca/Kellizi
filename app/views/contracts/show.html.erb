@@ -101,11 +101,11 @@
 <h2>Missing Coverages</h2>
 
 <h2>Not Convinced by your contract?</h2>
-      <%= link_to "Edit Contract", edit_contract_path(@contract), class: "button"  %>
-      <%= link_to "Delete Contract", contract_path(@contract), class: "button", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this contract?"} %>
-  <hr>
+<%= link_to "Edit Contract", edit_contract_path(@contract), class: "button"  %>
+<%= link_to "Delete Contract", contract_path(@contract), class: "button", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this contract?"} %>
+<hr>
 <div class="back-button">
-<%= link_to "<-Back", contracts_path %>
+  <%= link_to "<-Back", contracts_path(category: @contract.product.category.name) %>
 </div>
 </div>
 </div>
