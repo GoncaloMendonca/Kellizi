@@ -17,7 +17,6 @@ class ContractsController < ApplicationController
 
   def show
     authorize @contract
-
   end
 
   def new
