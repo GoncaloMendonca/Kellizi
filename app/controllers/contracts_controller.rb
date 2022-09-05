@@ -32,7 +32,7 @@ class ContractsController < ApplicationController
     authorize @contract
 
     if @contract.save
-      redirect_to contracts_path
+      redirect_to contracts_path(category: @contract.product.category.name)
     else
       render :new
     end
