@@ -2,14 +2,7 @@ class ContractsController < ApplicationController
   before_action :set_contract, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:category].present? && params[:query].present?
-      @contracts = policy_scope(Contract).joins(
-        "INNER JOIN products ON products.id = contracts.product_id
-        JOIN categories ON categories.id = products.category_id
-        AND categories.name = '#{params[:category]}'"
-      ).search_by_company_and_product(params[:query])
-    elsif params[:category].present?
-      # @contracts = policy_scope(Contract).search_by_company_and_product(params[:query])
+    if params[:category].present?
       @contracts = policy_scope(Contract).joins(
         "INNER JOIN products ON products.id = contracts.product_id
         JOIN categories ON categories.id = products.category_id
@@ -18,6 +11,8 @@ class ContractsController < ApplicationController
     else
       @contracts = policy_scope(Contract)
     end
+
+    @contracts = @contracts.search_by_company_and_product(params[:query]) if params[:query].present?
   end
 
   def show
