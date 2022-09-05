@@ -26,7 +26,7 @@
               </div>
               <%= f.input :pdf_contract, input_html: { class: "form-rounded" }, as: :file , data: {change_color_target:"input", action:"change->change-color#update"}%>
               <%= f.input :pdf_certificate, input_html: { class: "form-rounded" }, as: :file , data: {change_color_target:"input", action:"change->change-color#update"}%>
-              <%= f.button :button, class: 'btn-grad' %>
+              <%= f.button :button,  class: 'btn-grad' %>
             <% end %>
           <%= link_to "Back", contracts_path, class:"btn-gray", style:"width: 243px; margin-left: 21px" %>
         </div>
