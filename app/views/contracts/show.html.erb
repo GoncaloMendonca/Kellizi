@@ -21,7 +21,8 @@
               <% if  @contract.pdf_contract.attached? %>
                 <%= link_to @contract.pdf_contract.filename, rails_blob_path(@contract.pdf_contract, disposition: 'attachment') %>
               <% else %>
-                N/A
+              <i class="fa-solid fa-triangle-exclamation"></i>
+                <p class="warning-color">Warning no pdf contract, means no details.</p>
               <% end %>
             </h2>
             <h2>
@@ -42,7 +43,9 @@
               <% end %>
               <h3 class="rounded-border mx-3">Starts at: <%= @contract.starts_at.strftime('%d/%b/%Y') %></h3>
               <h3 class="rounded-border mx-3">Ends at: <%= @contract.ends_at&.strftime('%d/%b/%Y') %></h3>
+              <% if @contract.source %>
               <h3 class="rounded-border mx-3"><%= @contract.source %></h3>
+              <% end %>
             </div>
           </div>
         </div>
@@ -94,7 +97,7 @@
             </div>
           </div>
         <% else %>
-          EMPTY
+          <p class="warning-color">EMPTY</p>
           <%# End of Accordion %>
         <% end %>
       </div>
