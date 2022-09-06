@@ -11,14 +11,14 @@
         <%= f.error_notification %>
 
         <div class="form-inputs">
-          <div class="form-container">
-            <div class="form-container-left">
+          <div class="row">
+            <div class="col-6">
               <%= f.input :email, required: true, autofocus: true %>
               <%= f.input :first_name %>
               <%= f.input :last_name %>
               <%= f.input :gender %>
             </div>
-            <div class="form-container-right">
+            <div class="col-6">
               <%= f.input :phone_number %>
               <%= f.input :address %>
               <%= f.input :family_status %>
