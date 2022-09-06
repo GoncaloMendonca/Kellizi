@@ -36,3 +36,21 @@
 .link-contract {
   text-decoration: none;
 }
+
+.fa-trash{
+  color: #E9E9E9;
+  text-decoration: none;
+  font-size: 5vh;
+  &:hover{
+    color: #93afd7;
+  }
+}
+
+.fa-file-pen {
+  color: #c471ed83;
+  text-decoration: none;
+  font-size: 5vh;
+  &:hover{
+    color: #c471edb4;
+  }
+}
