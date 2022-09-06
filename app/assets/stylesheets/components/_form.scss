@@ -14,3 +14,8 @@
   box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
   border-radius: 10px;
 }
+
+.form-container {
+  display: flex;
+  justify-content: space-between;
+}
