@@ -31,8 +31,8 @@
       <%= link_to "", contract_path(contract), class: "fa-solid fa-trash-can", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this contract?"} %>
         <%= link_to contract_path(contract), class:"link-contract" do %>
         <div class="row">
-          <div class="col-3">
-            <%# <img src="" alt="logo insurance" class="rounded-square"> %>
+          <div class="col-3 d-flex">
+            <%= cl_image_tag contract.company.logo.key, class:"insurance-logo", style: "width: 100%; background: white; padding:5px" %>
           </div>
           <div class="col-6">
             <h1><%= contract.product.category.name %> - <%= contract.product.name %></h1>

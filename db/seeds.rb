@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
+require 'open-uri'
 
 Contract.destroy_all
 Company.destroy_all
@@ -19,7 +20,7 @@ users = [
   { email: "goncalo@kellizi.xyz", password: "123456" }
 ]
 
-puts 'Creating 5 fake users...'
+puts 'Creating 3 users...'
 users.each do |user|
   User.create!(
     email: user[:email],
@@ -36,8 +37,46 @@ categories = [
 ]
 
 companies = [
-  "Matmut", "Axa", "Macif", "Stoïk", "Allianz",
-  "GMF", "Aviva", "BNP Paribas Cardif", "Yuzzu", "AG insurance"
+   {
+    name: "Matmut",
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662393022/production/logo-matmut_rw2ve4.webp"
+   },
+   {
+    name: "Axa",
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662392716/production/axa_lkekyq.png"
+   },
+   {
+    name: "Macif",
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662393022/production/Macif_z99p2p.png"
+   },
+   {
+    name: "Stoïk",
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662393022/production/Stoik_kdlcjt.png"
+   },
+   {
+    name: "Allianz",
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662393022/production/allianz_zl87wb.svg"
+   },
+   {
+    name: "GMF",
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662393022/production/GMF_wer3hb.png"
+   },
+   {
+    name: "Aviva",
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662393022/production/Aviva_szctkn.png"
+   },
+   {
+    name: "BNP Paribas Cardif",
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662393022/production/BNPPF_Cardif_ea19ww.svg"
+   },
+   {
+    name: "Yuzzu",
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662392716/production/yuzzu_qodb6s.avif"
+   },
+   {
+    name: "AG insurance",
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662392716/production/AG-Insurance_upb9nf.jpg"
+   }
 ]
 
 categories.each do |category|
@@ -46,7 +85,10 @@ categories.each do |category|
 end
 
 companies.each do |company|
-  Company.create!(name: company)
+  insurance = Company.new(name: company[:name])
+  logo = URI.open(company[:logo])
+  insurance.logo.attach(io: logo, filename: "#{company[:name]}.png", content_type: "image/png")
+  insurance.save
   puts "Company created."
 end
 
