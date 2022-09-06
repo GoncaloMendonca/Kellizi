@@ -11,18 +11,23 @@
         <%= f.error_notification %>
 
         <div class="form-inputs">
-          <%= f.input :email, required: true, autofocus: true %>
-          <%= f.input :first_name %>
-          <%= f.input :last_name %>
-          <%= f.input :birth_date %>
-          <%= f.input :gender %>
-          <%= f.input :phone_number %>
-          <%= f.input :adress %>
-          <%= f.input :family_status %>
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-          <% end %>
-
+          <div class="form-container">
+            <div class="form-container-left">
+              <%= f.input :email, required: true, autofocus: true %>
+              <%= f.input :first_name %>
+              <%= f.input :last_name %>
+              <%= f.input :birth_date %>
+              <%= f.input :gender %>
+            </div>
+            <div class="form-container-right">
+              <%= f.input :phone_number %>
+              <%= f.input :adress %>
+              <%= f.input :family_status %>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+              <% end %>
+            </div>
+          </div>
           <%= f.input :password,
                       hint: "leave it blank if you don't want to change it",
                       required: false,
