@@ -37,9 +37,9 @@
           <div class="col-5">
             <h1><%= contract.product.category.name %> - <%= contract.product.name %></h1>
             <h2><%= contract.product.company.name %></h2>
-            <% if contract.timing === "monthly" %>
+            <% if contract.timing === "Monthly" %>
               <h2><%= contract.price %> €/month</h2>
-            <% elsif contract.timing === "annually" %>
+            <% elsif contract.timing === "Annually" %>
               <h2><%= contract.price %> €/year</h2>
             <% elsif (contract.ends_at - contract.starts_at).to_i > 365 %>
               <h2><%= contract.price %> € for <%= (contract.ends_at - contract.starts_at).to_i / 365 %> year(s)</h2>
