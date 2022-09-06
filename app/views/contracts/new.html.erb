@@ -6,7 +6,7 @@
     </div>
     <div class="panel-body">
       <div class="container">
-        <div class="row" data-controller="change-color">
+        <div class="row" data-controller="change-color company-product">
             <%= simple_form_for @contract, data: {turbo: false}, class:"position-relative" do |f| %>
               <%= f.association :company, include_blank: false, include_hidden: false, input_html: { class: "form-rounded" }, label: "Company name", data: { change_color_target: "input", action: "change->change-color#update" } %>
               <%= f.association :product, include_blank: false, include_hidden: false, input_html: { class: "form-rounded" }, label: "Product name", data: {change_color_target:"input", action:"change->change-color#update" }%>
