@@ -38,7 +38,7 @@
 
 .btn-grad-light {
   position: relative;
-  padding: 15px 25px 15px 25px;
+  padding: 10px 15px 10px 15px;
   text-decoration: none;
   color: $dark-blue;
   font-size: 15px;
@@ -63,6 +63,12 @@
 .button .btn-grad {
   border: none;
   color: white;
+}
+
+.btn:hover {
+  border-color: white;
+  color: $dark-blue;
+  background-color: white;
 }
 
 .btn-white{
