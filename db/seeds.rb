@@ -39,43 +39,43 @@ categories = [
 companies = [
    {
     name: "Matmut",
-    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662393022/production/logo-matmut_rw2ve4.webp"
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472773/production/logo-matmut_qd63o2.webp"
    },
    {
     name: "Axa",
-    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662392716/production/axa_lkekyq.png"
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472773/production/axa_ll0ywb.png"
    },
    {
     name: "Macif",
-    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662393022/production/Macif_z99p2p.png"
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472773/production/Macif_ea1eeo.png"
    },
    {
     name: "Stoïk",
-    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662393022/production/Stoik_kdlcjt.png"
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472773/production/Stoik_p46jlx.png"
    },
    {
     name: "Allianz",
-    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662393022/production/allianz_zl87wb.svg"
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472772/production/allianz_sxy4hy.svg"
    },
    {
     name: "GMF",
-    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662393022/production/GMF_wer3hb.png"
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472773/production/GMF_wwzdmc.png"
    },
    {
     name: "Aviva",
-    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662393022/production/Aviva_szctkn.png"
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472772/production/Aviva_ts1tuo.png"
    },
    {
     name: "BNP Paribas Cardif",
-    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662393022/production/BNPPF_Cardif_ea19ww.svg"
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472772/production/BNPPF_Cardif_kgypnq.svg"
    },
    {
     name: "Yuzzu",
-    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662392716/production/yuzzu_qodb6s.avif"
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472774/production/yuzzu_o6orki.avif"
    },
    {
     name: "AG insurance",
-    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662392716/production/AG-Insurance_upb9nf.jpg"
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472773/production/AG-Insurance_pq7uxn.jpg"
    }
 ]
 
