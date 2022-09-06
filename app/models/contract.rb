@@ -11,7 +11,7 @@ class Contract < ApplicationRecord
   validates :starts_at, presence: true
 
   has_many :coverages
-  enum :source, { work: 0, personal: 1 }
+  enum :source, { personal: 0, work: 1 }
 
   include PgSearch::Model
   pg_search_scope :search_by_company_and_product,
