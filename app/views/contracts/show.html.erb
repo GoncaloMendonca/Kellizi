@@ -15,7 +15,11 @@
               <h1><%= @contract.product.name %></h1>
               <h2><%= @contract.product.company.name %></h2>
             </div>
-            <h2>Price: <%= @contract.price %> €</h2>
+            <% if @contract.source === "work" %>
+                <p><%= "Not at your cost" %></p>
+            <% else %>
+              <h2>Price: <%= @contract.price %> €</h2>
+            <% end %>
             <h2>
               Contract pdf:
               <% if  @contract.pdf_contract.attached? %>
