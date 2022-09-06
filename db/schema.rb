@@ -57,7 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_130903) do
 
   create_table "contracts", force: :cascade do |t|
     t.integer "price"
-    t.integer "source"
+    t.integer "source", null: false
     t.date "starts_at", null: false
     t.datetime "ends_at"
     t.boolean "active"
