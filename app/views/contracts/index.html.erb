@@ -37,7 +37,17 @@
           <div class="col-5">
             <h1><%= contract.product.category.name %> - <%= contract.product.name %></h1>
             <h2><%= contract.product.company.name %></h2>
-            <h2><%= contract.price %> €/month</h2>
+            <% if contract.timing === "monthly" %>
+              <h2><%= contract.price %> €/month</h2>
+            <% elsif contract.timing === "annually" %>
+              <h2><%= contract.price %> €/year</h2>
+            <% elsif (contract.ends_at - contract.starts_at).to_i > 365 %>
+              <h2><%= contract.price %> € for <%= (contract.ends_at - contract.starts_at).to_i / 365 %> year(s)</h2>
+            <% elsif (contract.ends_at - contract.starts_at).to_i > 30 %>
+              <h2><%= contract.price %> € for <%= (contract.ends_at - contract.starts_at).to_i / 30 %> month(s)</h2>
+            <% else %>
+              <h2><%= contract.price %> € for <%= (contract.ends_at - contract.starts_at).to_i %> day(s)</h2>
+            <% end %>
           </div>
           <div class="col-3">
             <% if contract.active %>
@@ -45,8 +55,8 @@
             <% else %>
               <h3 class="rounded-border gray mx-3">Status: Inactive</h3>
             <% end %>
-            <h3 class="rounded-border mx-3">Starts at: <%= contract.starts_at.strftime('%d/%b/%Y') %></h3>
-            <h3 class="rounded-border mx-3">Ends at: <%= contract.ends_at&.strftime('%d/%b/%Y') %></h3>
+            <h3 class="rounded-border mx-3">Starts at: <%= contract.starts_at.strftime('%d %b %Y') %></h3>
+            <h3 class="rounded-border mx-3">Ends at: <%= contract.ends_at&.strftime('%d %b %Y') %></h3>
 
             <% if contract.source %>
             <h3 class="rounded-border mx-3">Contract source: <%= contract.source %></h3>

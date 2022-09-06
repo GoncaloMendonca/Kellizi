@@ -27,5 +27,5 @@ class Contract < ApplicationRecord
   delegate :category, to: :product
   delegate :company, to: :product
 
-  # TIMINGS = ["Monthly", "Annually", "Specific Timing"]
+  # TIMINGS = ["Monthly", "Annually", "Specific Period"]
 end

@@ -137,6 +137,7 @@ User.all.each do |user|
       active: [true, false].sample,
       product:,
       user:,
+      timing: ["Monthly", "Annualy", "Specific period"].sample,
       company: product.company, # do we need to store the company id here?
     )
   end
