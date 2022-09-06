@@ -21,6 +21,17 @@ class ContractsController < ApplicationController
 
   def new
     @contract = Contract.new
+    @company_products = Hash.new
+    Company.all.each do |company|
+
+      comp_products = Hash.new
+      company.products.each do |product|
+        comp_products["#{product.id}"] = product.name
+      end
+
+      @company_products["#{company.id}"] = comp_products
+    end
+
     authorize @contract
   end
 

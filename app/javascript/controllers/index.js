@@ -13,5 +13,8 @@ application.register("cards", CardsController)
 import FormDisplayController from "./form_display_controller"
 application.register("form-display", FormDisplayController)
 
+import CompanyProductsController from "./company_products_controller"
+application.register("company-products", CompanyProductsController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)

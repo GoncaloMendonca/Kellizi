@@ -119,7 +119,7 @@ end
 
 Company.all.each do |company|
   products.each do |product|
-    Product.create!(name: "#{company[:name]} - #{product[:name]}", category: product[:category], company:)
+    Product.create!(name: product[:name], category: product[:category], company:)
     puts "Product created."
   end
 end
