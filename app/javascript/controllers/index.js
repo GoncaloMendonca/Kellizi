@@ -10,5 +10,8 @@ application.register("change-color", ChangeColorController)
 import CardsController from "./cards_controller"
 application.register("cards", CardsController)
 
+import FormDisplayController from "./form_display_controller"
+application.register("form-display", FormDisplayController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)

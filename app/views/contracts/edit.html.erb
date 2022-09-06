@@ -6,27 +6,60 @@
     </div>
     <div class="panel-body">
       <div class="container">
-        <div class="row">
-            <%= simple_form_for @contract, data: {turbo: false}, class:"position-relative" do |f| %>
+        <div class="row" data-controller="form-display">
+            <%= simple_form_for @contract, data: {turbo: false},
+            class:"position-relative" do |f| %>
               <%= f.association :company %>
               <%= f.association :product %>
-              <%= f.input :price, as: :integer %>
-              <%= f.input :source, as: :select, collection: Contract.sources.keys %>
-              <p>Activity Status <%= f.input :active, as: :radio_buttons %></p>
-              <div class="d-flex mb-3">
-                <div>
-                  Starts at:
-                  <%= f.date_field :starts_at, class: "form-rounded form-control", as: :date , data: {change_color_target:"input", action:"change->change-color#update"}%>
-                </div>
-
-                <div>
-                  Ends at:
-                  <%= f.date_field :ends_at, class: "form-rounded form-control", as: :date , data: {change_color_target:"input", action:"change->change-color#update"}%>
-                </div>
-              </div>
-              <%= f.input :pdf_contract, as: :file %>
-              <%= f.input :pdf_certificate, as: :file %>
-              <%= f.button :button, class: 'btn-grad-light' %>
+              <%= f.input :source,
+                          input_html: {
+                            class: "form-rounded",
+                            data: {
+                              form_display_target: "source",
+                              action:"change->form-display#showInputs"
+                            }
+                          },
+                          as: :select,
+                          include_blank: false,
+                          collection: Contract.sources.keys %>
+              <%= f.input :price,
+                          input_html: {
+                            class: "form-rounded"
+                          },
+                          wrapper_html: {
+                            data: { form_display_target: "input" }
+                          },
+                          as: :integer %>
+              <%= f.input :timing,
+                          label: "Payment frequency",
+                          as: :radio_buttons,
+                          collection_wrapper_tag: "div",
+                          collection_wrapper_class: "timing-wrapper",
+                          item_wrapper_class: "timing-item",
+                          input_html: {
+                            class: "timing-selector"
+                          },
+                          wrapper_html: {
+                            data: { form_display_target: "input" }
+                          },
+                          collection: ["Monthly", "Annually", "Specific Timing"]%>
+              <%= f.input :active,
+                          checked: true,
+                          as: :radio_buttons,
+                          label: "Insurance active?",
+                          wrapper_html: {
+                            data: { form_display_target: "input" }
+                          } %>
+              <%= f.input :starts_at,
+                          as: :date %>
+              <%= f.input :ends_at,
+                          as: :date %>
+              <%= f.input :pdf_contract,
+                          as: :file %>
+              <%= f.input :pdf_certificate,
+                          as: :file %>
+              <%= f.button :button,
+                          class: 'btn-grad-light' %>
               <%= link_to "Back", contract_path(@contract.id), class:"btn-gray position-absolute", style:"width: 243px; margin-left: 21px; right:16%" %>
             <% end %>
         </div>
