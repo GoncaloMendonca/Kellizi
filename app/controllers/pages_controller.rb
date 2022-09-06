@@ -8,7 +8,8 @@ class PagesController < ApplicationController
   def dashboard
   end
 
-  def myprofile
+  def my_profile
+    current_user.save
   end
 
 end
