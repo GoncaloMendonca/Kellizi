@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_09_06_130903) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,6 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_130903) do
     t.bigint "user_id"
     t.bigint "coverage_id"
     t.bigint "company_id", null: false
+    t.string "timing"
     t.index ["company_id"], name: "index_contracts_on_company_id"
     t.index ["coverage_id"], name: "index_contracts_on_coverage_id"
     t.index ["product_id"], name: "index_contracts_on_product_id"
