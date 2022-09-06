@@ -122,7 +122,6 @@ Company.all.each do |company|
     Product.create!(name: "#{company[:name]} - #{product[:name]} ", category: product[:category], company:)
     puts "Product created."
   end
-
 end
 
 User.all.each do |user|
