@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   devise_scope :user do
-    get 'my_profile', to: "devise/registrations#edit"
+    get 'edit_profile', to: "devise/registrations#edit"
   end
+
+  get 'my_profile', to: "pages#my_profile"
 
   root to: "pages#home"
 
