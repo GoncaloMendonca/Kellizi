@@ -6,14 +6,29 @@
     </div>
     <div class="panel-body">
       <div class="container">
-        <div class="row">
-            <%= simple_form_for @contract, data: {turbo: false}, class:"position-relative" do |f| %>
+        <div class="row" data-controller="form-display">
+            <%= simple_form_for @contract, data: {turbo: false},
+            class:"position-relative" do |f| %>
               <%= f.association :company %>
               <%= f.association :product %>
               <%= f.input :source,
+                          input_html: {
+                            class: "form-rounded",
+                            data: {
+                              form_display_target: "source",
+                              action:"change->form-display#showInputs"
+                            }
+                          },
                           as: :select,
+                          include_blank: false,
                           collection: Contract.sources.keys %>
               <%= f.input :price,
+                          input_html: {
+                            class: "form-rounded"
+                          },
+                          wrapper_html: {
+                            data: { form_display_target: "input" }
+                          },
                           as: :integer %>
               <%= f.input :timing,
                           label: "Payment frequency",
@@ -26,12 +41,15 @@
                           },
                           wrapper_html: {
                             data: { form_display_target: "input" }
-                          }
-                          # collection: ["Monthly", "Annually", "Specific Timing"]
-                          %>
+                          },
+                          collection: ["Monthly", "Annually", "Specific Timing"]%>
               <%= f.input :active,
+                          checked: true,
                           as: :radio_buttons,
-                          label: "Insurance active?" %>
+                          label: "Insurance active?",
+                          wrapper_html: {
+                            data: { form_display_target: "input" }
+                          } %>
               <%= f.input :starts_at,
                           as: :date %>
               <%= f.input :ends_at,
