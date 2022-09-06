@@ -41,12 +41,12 @@
               <h2><%= contract.price %> €/month</h2>
             <% elsif contract.timing === "Annually" %>
               <h2><%= contract.price %> €/year</h2>
-            <% elsif (contract.ends_at - contract.starts_at).to_i > 365 %>
-              <h2><%= contract.price %> € for <%= (contract.ends_at - contract.starts_at).to_i / 365 %> year(s)</h2>
-            <% elsif (contract.ends_at - contract.starts_at).to_i > 30 %>
-              <h2><%= contract.price %> € for <%= (contract.ends_at - contract.starts_at).to_i / 30 %> month(s)</h2>
+            <% elsif ((contract.ends_at.to_time.to_i - contract.starts_at.to_time.to_i) / 3600 / 24) > 365 %>
+              <h2><%= contract.price %> € for <%= ((contract.ends_at.to_time.to_i - contract.starts_at.to_time.to_i) / 3600 / 24) / 365 %> year(s)</h2>
+            <% elsif ((contract.ends_at.to_time.to_i - contract.starts_at.to_time.to_i) / 3600 / 24) > 30 %>
+              <h2><%= contract.price %> € for <%= ((contract.ends_at.to_time.to_i - contract.starts_at.to_time.to_i) / 3600 / 24) / 30 %> month(s)</h2>
             <% else %>
-              <h2><%= contract.price %> € for <%= (contract.ends_at - contract.starts_at).to_i %> day(s)</h2>
+              <h2><%= contract.price %> € for <%= ((contract.ends_at.to_time.to_i - contract.starts_at.to_time.to_i) / 3600 / 24) %> day(s)</h2>
             <% end %>
           </div>
           <div class="col-3">
