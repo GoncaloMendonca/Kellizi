@@ -7,10 +7,11 @@
     <div class="panel-body">
       <div class="container">
         <div class="row" data-controller="change-color">
-            <%= simple_form_for @contract, data: {turbo: false} do |f| %>
+            <%= simple_form_for @contract, data: {turbo: false}, class:"position-relative" do |f| %>
               <%= f.association :company, include_blank: false, include_hidden: false, input_html: { class: "form-rounded" }, label: "Company name", data: { change_color_target: "input", action: "change->change-color#update" } %>
               <%= f.association :product, include_blank: false, include_hidden: false, input_html: { class: "form-rounded" }, label: "Product name", data: {change_color_target:"input", action:"change->change-color#update" }%>
               <%= f.input :price, input_html: { class: "form-rounded" }, as: :integer, data: {change_color_target:"input", action:"change->change-color#update"} %>
+              <%= f.input :timing, label: "Payment frequency", as: :radio_buttons, collection_wrapper_tag: "div", collection_wrapper_class: "timing-wrapper", item_wrapper_class: "timing-item", input_html: {class: "timing-selector"}, collection: ["Monthly", "Annually", "Specific Timing"] %>
               <%= f.input :source, input_html: { class: "form-rounded" },  as: :select, collection: Contract.sources.keys, data: {change_color_target:"input", action:"change->change-color#update"} %>
               <%= f.input :active, checked: true, as: :radio_buttons, label:"Insurance active?" %>
               <div class="d-flex mb-3">
@@ -26,9 +27,9 @@
               </div>
               <%= f.input :pdf_contract, input_html: { class: "form-rounded" }, as: :file , data: {change_color_target:"input", action:"change->change-color#update"}%>
               <%= f.input :pdf_certificate, input_html: { class: "form-rounded" }, as: :file , data: {change_color_target:"input", action:"change->change-color#update"}%>
-              <%= f.button :button,  class: 'btn-grad' %>
+              <%= f.button :button,  class: 'btn-grad-light' %>
+              <%= link_to "Back", contracts_path, class:"btn-gray position-absolute", style:"width: 243px; margin-left: 21px; right:16%" %>
             <% end %>
-          <%= link_to "Back", contracts_path, class:"btn-gray", style:"width: 243px; margin-left: 21px" %>
         </div>
     </div>
 </div>

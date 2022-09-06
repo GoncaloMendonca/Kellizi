@@ -15,7 +15,41 @@
   border-radius: 10px;
 }
 
+.timing-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.timing-item {
+  flex: 0 0 30%;
+}
+
+.timing-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.timing-selector + label {
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 15px;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #EAEAEA;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.timing-selector:checked + label {
+  color: black !important;
+  background: #009dff7c
+}
+
 .form-container {
   display: flex;
   justify-content: space-between;
 }
+
