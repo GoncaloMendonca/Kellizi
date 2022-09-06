@@ -16,12 +16,12 @@
               <%= f.input :email, required: true, autofocus: true %>
               <%= f.input :first_name %>
               <%= f.input :last_name %>
-              <%= f.input :birth_date %>
+              <%= f.input :birth_date, class: "form-rounded form-control", as: :date , data: {change_color_target:"input", action:"change->change-color#update"} %>
               <%= f.input :gender %>
             </div>
             <div class="form-container-right">
               <%= f.input :phone_number %>
-              <%= f.input :adress %>
+              <%= f.input :address %>
               <%= f.input :family_status %>
               <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                 <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
