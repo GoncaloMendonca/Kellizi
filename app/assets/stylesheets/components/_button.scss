@@ -115,3 +115,33 @@
 .button .btn-grad {
   border:0;
 }
+
+.btn-gray-cancel {
+  background-color: #fff;
+  border: 1px solid #d5d9d9;
+  border-radius: 15px;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  box-sizing: border-box;
+  color: #343334;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 15px;
+  padding: 3px 15px 3px 15px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+.btn-gray-cancel:hover {
+  background-color: #f9e2e2;
+  color: $red;
+}
+
+// .btn-gray-cancel:focus {
+//   border-color: $purple;
+//   box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+//   outline: 0;
+// }
