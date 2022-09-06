@@ -10,14 +10,38 @@
             <%= simple_form_for @contract, data: {turbo: false}, class:"position-relative" do |f| %>
               <%= f.association :company %>
               <%= f.association :product %>
-              <%= f.input :price, as: :integer %>
-              <%= f.input :source, as: :select, collection: Contract.sources.keys %>
-              <p>Activity Status <%= f.input :active, as: :radio_buttons %></p>
-              <%= f.input :starts_at, as: :date %>
-              <%= f.input :ends_at, as: :date %>
-              <%= f.input :pdf_contract, as: :file %>
-              <%= f.input :pdf_certificate, as: :file %>
-              <%= f.button :button, class: 'btn-grad-light' %>
+              <%= f.input :source,
+                          as: :select,
+                          collection: Contract.sources.keys %>
+              <%= f.input :price,
+                          as: :integer %>
+              <%= f.input :timing,
+                          label: "Payment frequency",
+                          as: :radio_buttons,
+                          collection_wrapper_tag: "div",
+                          collection_wrapper_class: "timing-wrapper",
+                          item_wrapper_class: "timing-item",
+                          input_html: {
+                            class: "timing-selector"
+                          },
+                          wrapper_html: {
+                            data: { form_display_target: "input" }
+                          }
+                          # collection: ["Monthly", "Annually", "Specific Timing"]
+                          %>
+              <%= f.input :active,
+                          as: :radio_buttons,
+                          label: "Insurance active?" %>
+              <%= f.input :starts_at,
+                          as: :date %>
+              <%= f.input :ends_at,
+                          as: :date %>
+              <%= f.input :pdf_contract,
+                          as: :file %>
+              <%= f.input :pdf_certificate,
+                          as: :file %>
+              <%= f.button :button,
+                          class: 'btn-grad-light' %>
               <%= link_to "Back", contract_path(@contract.id), class:"btn-gray position-absolute", style:"width: 243px; margin-left: 21px; right:16%" %>
             <% end %>
         </div>
