@@ -26,7 +26,7 @@
       <% end %>
     </div>
     <% @contracts.each do |contract| %>
-      <div class="insurance-card insurnace-card-hover p-3">
+      <div class="insurance-card insurance-card-hover p-3">
         <%= link_to contract_path(contract), class:"link-contract" do %>
           <div class="row">
             <div class="col-3">
@@ -63,9 +63,9 @@
                 </div>
                 <div class="col-6 border-bottom pt-2">
                   <% if contract.active %>
-                    <h3 class="rounded-border pink text-align-center">Active</h3>
+                    <h3 class="pink">Active</h3>
                   <% else %>
-                    <h3 class="rounded-border gray">Inactive</h3>
+                    <h3 class="gray", style="color:white !important">Inactive</h3>
                   <% end %>
                 </div>
                 <div class="col-6 border-bottom pt-2">

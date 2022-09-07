@@ -41,7 +41,7 @@
             <%= link_to @contract.pdf_contract.filename, rails_blob_path(@contract.pdf_contract, disposition: 'attachment') %>
           <% else %>
             N/A
-            <h4 class="warning-color", style="font-size: smaller"><i class="fa-solid fa-triangle-exclamation"></i>Warning no pdf contract, means no details.</h4>
+            <h4 style="font-size: smaller"><i class="fa-solid fa-triangle-exclamation"></i>Warning no pdf contract, means no details.</h4>
           <% end %>
         </h2>
         <h2>
