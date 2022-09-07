@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
-  def after_update_path_for(resource)
+  def user_root_path
     my_profile_path
   end
 
