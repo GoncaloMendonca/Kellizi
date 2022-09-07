@@ -8,9 +8,9 @@
   <div class="row">
   <div class="insurance-card p-2">
   <% if current_user.first_name.present? || current_user.last_name.present? %>
-    <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
+    <h5>Name: <%= current_user.first_name %> <%= current_user.last_name %></h5>
   <% else %>
-    <h4>First Last</h4>
+    <h4>Name: </h4>
   <% end %>
   <% if current_user.gender.present? %>
     <h2>Gender: <%= current_user.gender %></h2>
@@ -20,27 +20,26 @@
   <% if current_user.phone_number.present? %>
     <h2>Phone Number: <%= current_user.phone_number %></h2>
   <% else %>
-    <h2>Phone_number</h2>
+    <h2>Phone Number:</h2>
   <% end %>
   <% if current_user.address.present? %>
     <h2>Address: <%= current_user.address %></h2>
   <% else %>
-    <h2>Address</h2>
+    <h2>Address: </h2>
   <% end %>
   <% if current_user.family_status.present? %>
     <h2>Family Status: <%= current_user.family_status %></h2>
   <% else %>
-    <h2>Family_status</h2>
+    <h2>Family Status: </h2>
   <% end %>
   <% if current_user.birth_date.present? %>
     <h2>Birth date: <%= current_user.birth_date %></h2>
   <% else %>
-    <h2>Birth_date</h2>
+    <h2>Birth date: </h2>
   <% end %>
   <h2>Email: <%= current_user.email %></h2>
   </div>
   </div>
-  <%= javascript_include_tag "//www.google.com/jsapi" %>
   <div class="chart">
     <div class = "row">
       <div class ="col-6">

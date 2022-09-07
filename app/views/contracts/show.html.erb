@@ -3,13 +3,13 @@
     <h1>My contract - <%= @contract.product.name %></h1>
   </div>
 </div>
-
-<div class="container">
-  <div class="insurance-card p-2">
-  <div class="row">
-    <div class="col-3">
-      <div class="logo">
-        <%= cl_image_tag @contract.company.logo.key, class:"insurance-logo", style: "width: 100%; background: white; padding:5px" %>
+  <div class="container">
+    <div class="insurance-card p-2">
+    <div class="row">
+      <div class="col-3">
+        <div class="logo">
+          <%= cl_image_tag @contract.company.logo.key, class:"insurance-logo", style: "width: 100%; background: white; padding:5px" %>
+        </div>
       </div>
     </div>
     <div class="col-5">
@@ -145,3 +145,4 @@
     <%= link_to "Back", contracts_path(category: @contract.product.category.name), class:"btn-gray", style:"width: 243px; margin-top: 20px;"%>
   <%# </div> %>
 </div>
+
