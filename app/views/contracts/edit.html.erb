@@ -50,10 +50,28 @@
                           wrapper_html: {
                             data: { form_display_target: "input" }
                           } %>
-              <%= f.input :starts_at,
-                          as: :date %>
-              <%= f.input :ends_at,
-                          as: :date %>
+              <div class="d-flex mb-3">
+                <div>
+                  Starts at:
+                  <%= f.date_field :starts_at,
+                                    class: "form-rounded form-control",
+                                    as: :date,
+                                    data: {
+                                      change_color_target:"input",
+                                      action:"change->change-color#update"
+                                    }%>
+                </div>
+                <div>
+                  Ends at:
+                  <%= f.date_field :ends_at,
+                                    class: "form-rounded form-control",
+                                    as: :date,
+                                    data: {
+                                      change_color_target:"input",
+                                      action:"change->change-color#update"
+                                    }%>
+                </div>
+              </div>
               <%= f.input :pdf_contract,
                           as: :file %>
               <%= f.input :pdf_certificate,
