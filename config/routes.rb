@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
 
   get 'my_profile', to: "pages#my_profile"
+  get 'contact_us', to: "pages#contact_us"
 
   root to: "pages#home"
 
