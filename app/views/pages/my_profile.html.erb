@@ -41,24 +41,32 @@
   </div>
   </div>
   <%= javascript_include_tag "//www.google.com/jsapi" %>
-  <div class = "row">
-    <div class ="col-6">
-      <%= pie_chart Category.joins(:products)
-                            .where("categories.id = products.category_id")
-                            .joins(:contracts)
-                            .where("products.id = contracts.product_id")
-                            .where("contracts.user_id = #{current_user.id}")
-                            .group(:name)
-                            .count %>
-    </div>
-    <div class ="col-6">
-      <%= pie_chart Category.joins(:products)
-                            .where("categories.id = products.category_id")
-                            .joins(:contracts)
-                            .where("products.id = contracts.product_id")
-                            .where("contracts.user_id = #{current_user.id}")
-                            .group(:name)
-                            .sum(:price) %>
+  <div class="chart">
+    <div class = "row">
+      <div class ="col-6">
+        <div class ="charts-title">
+          <h4>Distribution of categories by number of contracts</h4>
+        </div>
+        <%= pie_chart Category.joins(:products)
+                              .where("categories.id = products.category_id")
+                              .joins(:contracts)
+                              .where("products.id = contracts.product_id")
+                              .where("contracts.user_id = #{current_user.id}")
+                              .group(:name)
+                              .count %>
+      </div>
+      <div class ="col-6">
+        <div class ="charts-title">
+          <h4>Distribution of categories by money spent per month</h4>
+        </div>
+          <%= pie_chart Category.joins(:products)
+                                .where("categories.id = products.category_id")
+                                .joins(:contracts)
+                                .where("products.id = contracts.product_id")
+                                .where("contracts.user_id = #{current_user.id}")
+                                .group(:name)
+                                .sum(:price) %>
+      </div>
     </div>
   </div>
   <hr>
