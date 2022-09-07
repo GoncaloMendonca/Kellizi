@@ -5,27 +5,22 @@
 </div>
 <div class="container">
   <div class="d-flex", style= "justify-content: space-between">
-  <div class="container">
-    <div class="row">
-      <%= link_to "Back", "/dashboard", class:"btn-gray", style:"width: 200px;" %>
+         <%= link_to "Back", "/dashboard", class:"btn-gray", style:"width: 200px;" %>
+         <%= link_to "New Contract", new_contract_path, class: "btn-grad-light" %>
+  </div>
+  <div class="nav-search mt-4">
+    <div class="search">
+      <%= form_with url: contracts_path, method: :get, class: "d-flex gap" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Look for a Contract"
+        %>
+        <%= hidden_field_tag :category, params[:category] %>
+        <%= button_tag "Search", class: "btn-gray" %>
+      <% end %>
     </div>
-      <%= link_to "New Contract", new_contract_path, class: "btn-grad-light" %>
-    </div>
-    <div class="nav-search mt-4">
-      <div class="search">
-        <%= form_with url: contracts_path, method: :get, class: "d-flex gap" do %>
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Look for a Contract"
-          %>
-          <%= hidden_field_tag :category, params[:category] %>
-          <%= button_tag "Search", class: "btn-gray" %>
-        <% end %>
-      </div>
-
       <% @contracts.each do |contract| %>
-
           <div class="row insurance-card insurance-card-hover p-3">
             <div class="col-3">
               <div class="logo">
