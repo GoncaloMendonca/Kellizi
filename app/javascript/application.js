@@ -2,3 +2,7 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "bootstrap"
+
+require("chartkick")
+require("chart.js")
+

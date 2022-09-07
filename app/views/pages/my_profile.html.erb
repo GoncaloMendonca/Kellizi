@@ -40,6 +40,10 @@
   <h2>Email: <%= current_user.email %></h2>
   </div>
   </div>
+  <%= javascript_include_tag "//www.google.com/jsapi" %>
+  <%# <%= javascript_include_tag "application", "chartkick" %>
+
+  <%= pie_chart Contract.group(:price).count %>
   <hr>
   <%= link_to "Edit Profile", "edit_profile", class: "btn-gray"  %>
   <%= link_to "Back", root_path, class:"btn-gray position-absolute", style:"width: 100px; margin-left: 21px;" %>

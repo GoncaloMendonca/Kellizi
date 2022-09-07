@@ -82,5 +82,7 @@ gem 'faker'
 gem "pg_search"
 gem "pundit"
 gem "cloudinary"
+gem "groupdate"
+gem "chartkick"
 
 gem "dotenv-rails", groups: [:development, :test]
