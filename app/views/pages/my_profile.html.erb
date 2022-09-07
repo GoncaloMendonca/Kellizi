@@ -41,9 +41,26 @@
   </div>
   </div>
   <%= javascript_include_tag "//www.google.com/jsapi" %>
-  <%# <%= javascript_include_tag "application", "chartkick" %>
-
-  <%= pie_chart Contract.group(:price).count %>
+  <div class = "row">
+    <div class ="col-6">
+      <%= pie_chart Category.joins(:products)
+                            .where("categories.id = products.category_id")
+                            .joins(:contracts)
+                            .where("products.id = contracts.product_id")
+                            .where("contracts.user_id = #{current_user.id}")
+                            .group(:name)
+                            .count %>
+    </div>
+    <div class ="col-6">
+      <%= pie_chart Category.joins(:products)
+                            .where("categories.id = products.category_id")
+                            .joins(:contracts)
+                            .where("products.id = contracts.product_id")
+                            .where("contracts.user_id = #{current_user.id}")
+                            .group(:name)
+                            .sum(:price) %>
+    </div>
+  </div>
   <hr>
   <%= link_to "Edit Profile", "edit_profile", class: "btn-gray"  %>
   <%= link_to "Back", root_path, class:"btn-gray position-absolute", style:"width: 100px; margin-left: 21px;" %>
