@@ -6,34 +6,35 @@
 <div class="container">
   <div class="d-flex", style= "justify-content: space-between">
 
-  <div class="container">
-    <div class="row">
-      <%= link_to "Back", "/dashboard", class:"btn-gray", style:"width: 200px;" %>
+    <div class="container">
+      <div class="row">
+        <%= link_to "Back", "/dashboard", class:"btn-gray", style:"width: 200px;" %>
+      </div>
     </div>
-  </div>
-    <%= link_to "New Contract", new_contract_path, class: "btn-grad-light" %>
-  </div>
-  <div class="nav-search mt-4">
-    <div class="search">
-      <%= form_with url: contracts_path, method: :get, class: "d-flex gap" do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Look for a Contract"
-        %>
-        <%= hidden_field_tag :category, params[:category] %>
-        <%= button_tag "Search", class: "btn-gray" %>
-      <% end %>
+      <%= link_to "New Contract", new_contract_path, class: "btn-grad-light" %>
     </div>
-    <% @contracts.each do |contract| %>
-      <div class="insurance-card insurance-card-hover p-3">
-        <%= link_to contract_path(contract), class:"link-contract" do %>
-          <div class="row">
+    <div class="nav-search mt-4">
+      <div class="search">
+        <%= form_with url: contracts_path, method: :get, class: "d-flex gap" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Look for a Contract"
+          %>
+          <%= hidden_field_tag :category, params[:category] %>
+          <%= button_tag "Search", class: "btn-gray" %>
+        <% end %>
+      </div>
+
+      <% @contracts.each do |contract| %>
+
+          <div class="row insurance-card insurance-card-hover p-3">
             <div class="col-3">
               <div class="logo">
                 <%= cl_image_tag contract.company.logo.key, class:"insurance-logo", style: "width: 100%; background: white; padding:5px" %>
               </div>
             </div>
+
             <div class="col-5">
               <h1><%= contract.product.category.name %> - <%= contract.product.name %></h1>
               <h2><%= contract.product.company.name %></h2>
@@ -50,12 +51,30 @@
               <% else %>
                 <h2><%= contract.price %> € for <%= ((contract.ends_at.to_time.to_i - contract.starts_at.to_time.to_i) / 3600 / 24) %> day(s)</h2>
               <% end %>
-              <div class="d-flex">
-                <%= link_to "", edit_contract_path(contract), class:"fa-solid fa-file-pen px-5 mt-5" %>
-                <%= link_to "", contract_path(contract),  class:"fa-solid fa-trash px-5 mt-5",
-                                                          data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this contract?"} %>
+              <div class="row">
+                <div class="col-2">
+                  <%= link_to "", contract_path(contract), class:"fa-solid fa-magnifying-glass" %>
+                </div>
+                <div class="col-10">
+                  <h3><%= link_to "More details", contract_path(contract), class:"text-decoration-none" %></h3>
+                </div>
+                <div class="col-2">
+                  <%= link_to "", edit_contract_path(contract), class:"fa-solid fa-file-pen" %>
+                </div>
+                <div class="col-10">
+                  <h3><%= link_to "Update the contract", edit_contract_path(contract), class:"text-decoration-none" %></h3>
+                </div>
+                <div class="col-2">
+                  <%= link_to "", contract_path(contract),  class:"fa-solid fa-trash",
+                                                            data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this contract?"} %>
+                </div>
+                <div class="col-10">
+                  <h3><%= link_to "Delete the contract", contract_path(contract),  class:"text-decoration-none",
+                                                            data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this contract?"} %></h3>
+                </div>
               </div>
             </div>
+
             <div class="col-4">
               <div class="row">
                 <div class="col-6 border-bottom pt-2">
@@ -84,17 +103,15 @@
                   <h2>Contract source:</h2>
                 </div>
                 <div class="col-6 border-bottom pt-2">
-                <h3><%= contract.source.capitalize %></h3>
+                  <h3><%= contract.source.capitalize %></h3>
                 </div>
                 <% unless contract.pdf_contract.attached? %>
-                <h4><i class="fa-solid fa-triangle-exclamation"></i> No pdf contract</h4>
+                  <h4><i class="fa-solid fa-triangle-exclamation"></i> No pdf contract</h4>
                 <% end %>
               </div>
             </div>
           </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
   <br>
 </div>

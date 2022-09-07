@@ -4,146 +4,144 @@
   </div>
 </div>
 
-<div class="page-content">
-  <div class="container">
-    <div class="insurance-card p-2">
-    <div class="row">
-      <div class="col-3">
-        <div class="logo">
-          <%= cl_image_tag @contract.company.logo.key, class:"insurance-logo", style: "width: 100%; background: white; padding:5px" %>
-        </div>
+<div class="container">
+  <div class="insurance-card p-2">
+  <div class="row">
+    <div class="col-3">
+      <div class="logo">
+        <%= cl_image_tag @contract.company.logo.key, class:"insurance-logo", style: "width: 100%; background: white; padding:5px" %>
       </div>
-      <div class="col-6">
-        <h1><%= @contract.product.name %></h1>
-        <h2><%= @contract.product.category.name %></h2>
-        <h2><%= @contract.product.company.name %></h2>
-        <% if @contract.source === "work" %>
-          <h2><%= "No cost" %></h2>
-        <% elsif @contract.timing === "Monthly" %>
-          <h2><%= @contract.price %> €/month</h2>
-          <h2>Frequency: <%= @contract.timing %></h2>
-        <% elsif @contract.timing === "Annually" %>
-          <h2><%= @contract.price %> €/year</h2>
-          <h2>Frequency: <%= @contract.timing %></h2>
-        <% elsif ((@contract.ends_at.to_time.to_i - @contract.starts_at.to_time.to_i) / 3600 / 24) > 365 %>
-          <h2><%= @contract.price %> € for <%= ((@contract.ends_at.to_time.to_i - @contract.starts_at.to_time.to_i) / 3600 / 24) / 365 %> year(s)</h2>
-          <h2>Frequency: <%= @contract.timing %></h2>
-        <% elsif ((@contract.ends_at.to_time.to_i - @contract.starts_at.to_time.to_i) / 3600 / 24) > 30 %>
-          <h2><%= @contract.price %> € for <%= ((@contract.ends_at.to_time.to_i - @contract.starts_at.to_time.to_i) / 3600 / 24) / 30 %> month(s)</h2>
-          <h2>Frequency: <%= @contract.timing %></h2>
+    </div>
+    <div class="col-5">
+      <h1><%= @contract.product.name %></h1>
+      <h2>Category: <%= @contract.product.category.name %></h2>
+      <h2>Company: <%= @contract.product.company.name %></h2>
+      <% if @contract.source === "work" %>
+        <h2><%= "No cost" %></h2>
+      <% elsif @contract.timing === "Monthly" %>
+        <h2><%= @contract.price %> €/month</h2>
+        <h2>Frequency: <%= @contract.timing %></h2>
+      <% elsif @contract.timing === "Annually" %>
+        <h2><%= @contract.price %> €/year</h2>
+        <h2>Frequency: <%= @contract.timing %></h2>
+      <% elsif ((@contract.ends_at.to_time.to_i - @contract.starts_at.to_time.to_i) / 3600 / 24) > 365 %>
+        <h2><%= @contract.price %> € for <%= ((@contract.ends_at.to_time.to_i - @contract.starts_at.to_time.to_i) / 3600 / 24) / 365 %> year(s)</h2>
+        <h2>Frequency: <%= @contract.timing %></h2>
+      <% elsif ((@contract.ends_at.to_time.to_i - @contract.starts_at.to_time.to_i) / 3600 / 24) > 30 %>
+        <h2><%= @contract.price %> € for <%= ((@contract.ends_at.to_time.to_i - @contract.starts_at.to_time.to_i) / 3600 / 24) / 30 %> month(s)</h2>
+        <h2>Frequency: <%= @contract.timing %></h2>
+      <% else %>
+        <h2><%= @contract.price %> € for <%= ((@contract.ends_at.to_time.to_i - @contract.starts_at.to_time.to_i) / 3600 / 24) %> day(s)</h2>
+        <h2>Frequency: <%= @contract.timing %></h2>
+      <% end %>
+      <h2>
+        Contract pdf:
+        <% if  @contract.pdf_contract.attached? %>
+          <%= link_to @contract.pdf_contract.filename, rails_blob_path(@contract.pdf_contract, disposition: 'attachment') %>
         <% else %>
-          <h2><%= @contract.price %> € for <%= ((@contract.ends_at.to_time.to_i - @contract.starts_at.to_time.to_i) / 3600 / 24) %> day(s)</h2>
-          <h2>Frequency: <%= @contract.timing %></h2>
+          N/A
+          <h4 style="font-size: smaller"><i class="fa-solid fa-triangle-exclamation"></i>Warning no pdf contract, means no details.</h4>
         <% end %>
-        <h2>
-          Contract pdf:
-          <% if  @contract.pdf_contract.attached? %>
-            <%= link_to @contract.pdf_contract.filename, rails_blob_path(@contract.pdf_contract, disposition: 'attachment') %>
+      </h2>
+      <h2>
+        Contract certificate:
+        <% if  @contract.pdf_certificate.attached? %>
+          <%= link_to @contract.pdf_certificate.filename, rails_blob_path(@contract.pdf_certificate, disposition: 'attachment') %>
+        <% else %>
+          N/A
+        <% end %>
+      </h2>
+    </div>
+    <div class="col-4">
+      <div class="row">
+        <div class="col-6 border-bottom pt-2">
+          <h2>Status: </h2>
+        </div>
+        <div class="col-6 border-bottom pt-2">
+          <% if @contract.active %>
+            <h3 class="rounded-border pink text-align-center">Active</h3>
           <% else %>
-            N/A
-            <h4 style="font-size: smaller"><i class="fa-solid fa-triangle-exclamation"></i>Warning no pdf contract, means no details.</h4>
+            <h3 class="rounded-border gray">Inactive</h3>
           <% end %>
-        </h2>
-        <h2>
-          Contract certificate:
-          <% if  @contract.pdf_certificate.attached? %>
-            <%= link_to @contract.pdf_certificate.filename, rails_blob_path(@contract.pdf_certificate, disposition: 'attachment') %>
-          <% else %>
-            N/A
-          <% end %>
-        </h2>
-      </div>
-      <div class="col-3">
-        <div class="row">
-          <div class="col-6 border-bottom pt-2">
-            <h2>Status: </h2>
-          </div>
-          <div class="col-6 border-bottom pt-2">
-            <% if @contract.active %>
-              <h3 class="rounded-border pink text-align-center">Active</h3>
-            <% else %>
-              <h3 class="rounded-border gray">Inactive</h3>
-            <% end %>
-          </div>
-          <div class="col-6 border-bottom pt-2">
-            <h2>Starts at:</h2>
-          </div>
-          <div class="col-6 border-bottom pt-2">
-            <h3><%= @contract.starts_at.strftime('%d %b %Y') %></h3>
-          </div>
-          <div class="col-6 border-bottom pt-2">
-            <h2>Ends at:</h2>
-          </div>
-          <div class="col-6 border-bottom pt-2">
-            <h3><%= @contract.ends_at&.strftime('%d %b %Y') %></h3>
-          </div>
-          <div class="col-6 border-bottom pt-2">
-            <h2>Contract source:</h2>
-          </div>
-          <div class="col-6 border-bottom pt-2">
-          <h3><%= @contract.source.capitalize %></h3>
-          </div>
+        </div>
+        <div class="col-6 border-bottom pt-2">
+          <h2>Starts at:</h2>
+        </div>
+        <div class="col-6 border-bottom pt-2">
+          <h3><%= @contract.starts_at.strftime('%d %b %Y') %></h3>
+        </div>
+        <div class="col-6 border-bottom pt-2">
+          <h2>Ends at:</h2>
+        </div>
+        <div class="col-6 border-bottom pt-2">
+          <h3><%= @contract.ends_at&.strftime('%d %b %Y') %></h3>
+        </div>
+        <div class="col-6 border-bottom pt-2">
+          <h2>Contract source:</h2>
+        </div>
+        <div class="col-6 border-bottom pt-2">
+        <h3><%= @contract.source.capitalize %></h3>
         </div>
       </div>
+    </div>
+  </div>
+  <hr>
+    <%# Accordion %>
+    <h1>What guarantees are you insured for?</h1>
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <% if  @contract.pdf_contract.attached? %>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              Coverage 1
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+              Coverage 2
+            </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+              Coverage 3
+            </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+              Coverage 4
+            </button>
+          </h2>
+          <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+          </div>
+        </div>
+      <% else %>
+        <h4 style="font-size:smaller">Empty... if you want more detail, dowload your contract PDF <i class="fa-solid fa-otter"></i></h4>
+        <%# End of Accordion %>
+      <% end %>
     </div>
     <hr>
-      <%# Accordion %>
-      <h1>What guarantees are you insured for?</h1>
-      <div class="accordion accordion-flush" id="accordionFlushExample">
-        <% if  @contract.pdf_contract.attached? %>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingOne">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                Coverage 1
-              </button>
-            </h2>
-            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingTwo">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                Coverage 2
-              </button>
-            </h2>
-            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingThree">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                Coverage 3
-              </button>
-            </h2>
-            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingFour">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                Coverage 4
-              </button>
-            </h2>
-            <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-            </div>
-          </div>
-        <% else %>
-          <h4 style="font-size:smaller">Empty... if you want more detail, dowload your contract PDF <i class="fa-solid fa-otter"></i></h4>
-          <%# End of Accordion %>
-        <% end %>
-      </div>
-      <hr>
-      <h1>Not Convinced by your contract?</h1>
+    <h1>Not convinced by your contract?</h1>
 
-      <%= link_to "Edit Contract", edit_contract_path(@contract), class: "btn-gray"  %>
-      <%= link_to "Delete Contract", contract_path(@contract), class: "btn-gray", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this contract?"} %>
-    </div>
-    <%# <div class="container"> %>
-      <%= link_to "Back", contracts_path(category: @contract.product.category.name), class:"btn-gray", style:"width: 243px; margin-top: 20px;"%>
-    <%# </div> %>
+    <%= link_to "Edit Contract", edit_contract_path(@contract), class: "btn-gray"  %>
+    <%= link_to "Delete Contract", contract_path(@contract), class: "btn-gray", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this contract?"} %>
   </div>
+  <%# <div class="container"> %>
+    <%= link_to "Back", contracts_path(category: @contract.product.category.name), class:"btn-gray", style:"width: 243px; margin-top: 20px;"%>
+  <%# </div> %>
 </div>
