@@ -7,56 +7,86 @@
 <div class="page-content">
   <div class="container">
     <div class="insurance-card p-2">
-      <div class="show-container">
-        <%#  container for top %>
-        <div class="topcontainer">
-          <div class="topcontainer-left">
-            <div class="text1">
-              <h1><%= @contract.product.name %></h1>
-              <h2><%= @contract.product.company.name %></h2>
-            </div>
-            <% if @contract.source === "work" %>
-                <p><%= "Not at your cost" %></p>
-            <% else %>
-              <h2>Price: <%= @contract.price %> €</h2>
-              <h2>Frequency: <%= @contract.timing %></h2>
-            <% end %>
-            <h2>
-              Contract pdf:
-              <% if  @contract.pdf_contract.attached? %>
-                <%= link_to @contract.pdf_contract.filename, rails_blob_path(@contract.pdf_contract, disposition: 'attachment') %>
-              <% else %>
-              <i class="fa-solid fa-triangle-exclamation"></i>
-                <p class="warning-color">Warning no pdf contract, means no details.</p>
-              <% end %>
-            </h2>
-            <h2>
-              Contract certificate:
-              <% if  @contract.pdf_certificate.attached? %>
-                <%= link_to @contract.pdf_certificate.filename, rails_blob_path(@contract.pdf_certificate, disposition: 'attachment') %>
-              <% else %>
-                N/A
-              <% end %>
-            </h2>
+    <div class="row">
+      <div class="col-3">
+        <div class="logo">
+          <%= cl_image_tag @contract.company.logo.key, class:"insurance-logo", style: "width: 100%; background: white; padding:5px" %>
+        </div>
+      </div>
+      <div class="col-6">
+        <h1><%= @contract.product.name %></h1>
+        <h2><%= @contract.product.category.name %></h2>
+        <h2><%= @contract.product.company.name %></h2>
+        <% if @contract.source === "work" %>
+          <h2><%= "No cost" %></h2>
+        <% elsif @contract.timing === "Monthly" %>
+          <h2><%= @contract.price %> €/month</h2>
+          <h2>Frequency: <%= @contract.timing %></h2>
+        <% elsif @contract.timing === "Annually" %>
+          <h2><%= @contract.price %> €/year</h2>
+          <h2>Frequency: <%= @contract.timing %></h2>
+        <% elsif ((@contract.ends_at.to_time.to_i - @contract.starts_at.to_time.to_i) / 3600 / 24) > 365 %>
+          <h2><%= @contract.price %> € for <%= ((@contract.ends_at.to_time.to_i - @contract.starts_at.to_time.to_i) / 3600 / 24) / 365 %> year(s)</h2>
+          <h2>Frequency: <%= @contract.timing %></h2>
+        <% elsif ((@contract.ends_at.to_time.to_i - @contract.starts_at.to_time.to_i) / 3600 / 24) > 30 %>
+          <h2><%= @contract.price %> € for <%= ((@contract.ends_at.to_time.to_i - @contract.starts_at.to_time.to_i) / 3600 / 24) / 30 %> month(s)</h2>
+          <h2>Frequency: <%= @contract.timing %></h2>
+        <% else %>
+          <h2><%= @contract.price %> € for <%= ((@contract.ends_at.to_time.to_i - @contract.starts_at.to_time.to_i) / 3600 / 24) %> day(s)</h2>
+          <h2>Frequency: <%= @contract.timing %></h2>
+        <% end %>
+        <h2>
+          Contract pdf:
+          <% if  @contract.pdf_contract.attached? %>
+            <%= link_to @contract.pdf_contract.filename, rails_blob_path(@contract.pdf_contract, disposition: 'attachment') %>
+          <% else %>
+            N/A
+            <h4 class="warning-color", style="font-size: smaller"><i class="fa-solid fa-triangle-exclamation"></i>Warning no pdf contract, means no details.</h4>
+          <% end %>
+        </h2>
+        <h2>
+          Contract certificate:
+          <% if  @contract.pdf_certificate.attached? %>
+            <%= link_to @contract.pdf_certificate.filename, rails_blob_path(@contract.pdf_certificate, disposition: 'attachment') %>
+          <% else %>
+            N/A
+          <% end %>
+        </h2>
+      </div>
+      <div class="col-3">
+        <div class="row">
+          <div class="col-6 border-bottom pt-2">
+            <h2>Status: </h2>
           </div>
-          <div class="topcontainer-right">
-            <div class="box1">
-              <% if @contract.active %>
-                <h3 class="rounded-border pink mx-3">Active</h3>
-              <% else %>
-                <h3 class="rounded-border gray mx-3">Inactive</h3>
-              <% end %>
-              <h3 class="rounded-border mx-3">Starts at: <%= @contract.starts_at.strftime('%d/%b/%Y') %></h3>
-              <h3 class="rounded-border mx-3">Ends at: <%= @contract.ends_at&.strftime('%d/%b/%Y') %></h3>
-              <% if @contract.source %>
-              <h3 class="rounded-border mx-3"><%= @contract.source %></h3>
-              <% end %>
-            </div>
+          <div class="col-6 border-bottom pt-2">
+            <% if @contract.active %>
+              <h3 class="rounded-border pink text-align-center">Active</h3>
+            <% else %>
+              <h3 class="rounded-border gray">Inactive</h3>
+            <% end %>
+          </div>
+          <div class="col-6 border-bottom pt-2">
+            <h2>Starts at:</h2>
+          </div>
+          <div class="col-6 border-bottom pt-2">
+            <h3><%= @contract.starts_at.strftime('%d %b %Y') %></h3>
+          </div>
+          <div class="col-6 border-bottom pt-2">
+            <h2>Ends at:</h2>
+          </div>
+          <div class="col-6 border-bottom pt-2">
+            <h3><%= @contract.ends_at&.strftime('%d %b %Y') %></h3>
+          </div>
+          <div class="col-6 border-bottom pt-2">
+            <h2>Contract source:</h2>
+          </div>
+          <div class="col-6 border-bottom pt-2">
+          <h3><%= @contract.source.capitalize %></h3>
           </div>
         </div>
-        <%#  end of container for top%>
       </div>
-      <hr>
+    </div>
+    <hr>
       <%# Accordion %>
       <h1>What guarantees are you insured for?</h1>
       <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -102,7 +132,7 @@
             </div>
           </div>
         <% else %>
-          <p class="warning-color">EMPTY</p>
+          <h4 style="font-size:smaller">Empty... if you want more detail, dowload your contract PDF <i class="fa-solid fa-otter"></i></h4>
           <%# End of Accordion %>
         <% end %>
       </div>

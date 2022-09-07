@@ -10,16 +10,27 @@
 
 .insurance-card h3 {
   font-size: 12px;
-  color:black;
+  color: black;
+  margin-bottom: 0;
+}
+
+.insurance-card h4 {
+  font-size: 20px;
+  color: rgb(176, 11, 11);
+  margin-top:10px;
 }
 
 .insurance-card {
-  background-color: rgb(233, 233, 233);
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  color:black;
+  background-color: $white;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  border-radius: 10px;
   margin-top: 15px;
   padding-right: 20px;
-  color:black;
   position:relative;
+  &:hover {
+    font-size: 12px;
+  }
 }
 
 .insurance-card-hover {
@@ -32,8 +43,9 @@
 .rounded-border {
   background-color: white;
   border-radius: 5px;
-  text-align: center;
+  text-align: left;
   padding: 5px;
+  margin-bottom: 15px;
 }
 
 .pink {
@@ -56,7 +68,7 @@
 .insurance-logo {
   padding: 2%;
   margin-top: 1%;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  // box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .logo {
