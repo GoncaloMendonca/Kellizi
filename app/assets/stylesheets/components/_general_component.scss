@@ -35,18 +35,14 @@
 
 .link-contract {
   text-decoration: none;
+  width: fit-content;
 }
 
 .fa-trash{
   color: #E9E9E9;
   text-decoration: none;
   font-size: 5vh;
-  position: absolute;
-  bottom: 16%;
-  right: -2.5%;
   background: white;
-  padding: 10px 10px;
-  border-radius: 10%;
   &:hover{
     color: #93afd7;
   }
@@ -56,12 +52,7 @@
   color: #c471ed83;
   text-decoration: none;
   font-size: 5vh;
-  position: absolute;
-  top: 16%;
-  right: -3.5%;
   background: white;
-  padding: 10px 10px;
-  border-radius: 10%;
   &:hover{
     color: #c471edb4;
   }
