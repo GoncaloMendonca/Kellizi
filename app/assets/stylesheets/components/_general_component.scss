@@ -33,15 +33,12 @@
   margin-bottom: 20px;
 }
 
-.link-contract {
-  text-decoration: none;
-  width: fit-content;
-}
+
 
 .fa-trash{
   color: #E9E9E9;
   text-decoration: none;
-  font-size: 5vh;
+  font-size: 3vh;
   background: white;
   &:hover{
     color: #93afd7;
@@ -51,9 +48,23 @@
 .fa-file-pen {
   color: #c471ed83;
   text-decoration: none;
-  font-size: 5vh;
+  font-size: 3vh;
   background: white;
   &:hover{
     color: #c471edb4;
   }
+}
+
+.fa-magnifying-glass {
+  text-decoration: none;
+  font-size: 3vh;
+  background: white;
+  color: #c471ed83;
+  &:hover{
+    color: #c471edb4;
+  }
+}
+
+a:hover {
+  color:black;
 }
