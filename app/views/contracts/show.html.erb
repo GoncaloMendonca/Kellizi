@@ -57,7 +57,7 @@
           <div class="col-6 border-bottom pt-2">
             <h2>Status: </h2>
           </div>
-          <div class="col-6 border-bottom pt-2">
+          <div class="col-6 border-bottom pt-2 centered">
             <% if @contract.active %>
               <h3 class="rounded-border pink text-align-center">Active</h3>
             <% else %>
@@ -67,19 +67,19 @@
           <div class="col-6 border-bottom pt-2">
             <h2>Starts at:</h2>
           </div>
-          <div class="col-6 border-bottom pt-2">
+          <div class="col-6 border-bottom pt-2 centered">
             <h3><%= @contract.starts_at.strftime('%d %b %Y') %></h3>
           </div>
           <div class="col-6 border-bottom pt-2">
             <h2>Ends at:</h2>
           </div>
-          <div class="col-6 border-bottom pt-2">
+          <div class="col-6 border-bottom pt-2 centered">
             <h3><%= @contract.ends_at&.strftime('%d %b %Y') %></h3>
           </div>
           <div class="col-6 border-bottom pt-2">
             <h2>Contract source:</h2>
           </div>
-          <div class="col-6 border-bottom pt-2">
+          <div class="col-6 border-bottom pt-2 centered">
           <h3><%= @contract.source.capitalize %></h3>
           </div>
         </div>

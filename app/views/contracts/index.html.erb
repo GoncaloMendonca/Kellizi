@@ -6,7 +6,7 @@
 <div class="container">
   <div class="d-flex", style= "justify-content: space-between">
          <%= link_to "Back", "/dashboard", class:"btn-gray", style:"width: 243px; margin-top: 20px;" %>
-         <%= link_to "New Contract", new_contract_path, class: "btn-grad-light" %>
+         <%= link_to "New Contract", new_contract_path, class: "btn btn-grad-light" %>
   </div>
   <div class="nav-search mt-4">
     <div class="search">
@@ -49,20 +49,20 @@
                   <%= link_to "", contract_path(contract), class:"fa-solid fa-magnifying-glass" %>
                 </div>
                 <div class="col-10">
-                  <h3><%= link_to "More details", contract_path(contract), class:"text-decoration-none" %></h3>
+                  <h3><%= link_to "Details", contract_path(contract), class:"text-decoration-none" %></h3>
                 </div>
                 <div class="col-2">
                   <%= link_to "", edit_contract_path(contract), class:"fa-solid fa-file-pen" %>
                 </div>
                 <div class="col-10">
-                  <h3><%= link_to "Update the contract", edit_contract_path(contract), class:"text-decoration-none" %></h3>
+                  <h3><%= link_to "Update", edit_contract_path(contract), class:"text-decoration-none" %></h3>
                 </div>
                 <div class="col-2">
                   <%= link_to "", contract_path(contract),  class:"fa-solid fa-trash",
                                                             data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this contract?"} %>
                 </div>
                 <div class="col-10">
-                  <h3><%= link_to "Delete the contract", contract_path(contract),  class:"text-decoration-none",
+                  <h3><%= link_to "Delete", contract_path(contract),  class:"text-decoration-none",
                                                             data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this contract?"} %></h3>
                 </div>
               </div>
@@ -73,7 +73,7 @@
                 <div class="col-6 border-bottom pt-2">
                   <h2>Status: </h2>
                 </div>
-                <div class="col-6 border-bottom pt-2">
+                <div class="col-6 border-bottom pt-2 centered">
                   <% if contract.active %>
                     <h3 class="pink">Active</h3>
                   <% else %>
@@ -83,19 +83,19 @@
                 <div class="col-6 border-bottom pt-2">
                   <h2>Starts at:</h2>
                 </div>
-                <div class="col-6 border-bottom pt-2">
+                <div class="col-6 border-bottom pt-2 centered">
                   <h3><%= contract.starts_at.strftime('%d %b %Y') %></h3>
                 </div>
                 <div class="col-6 border-bottom pt-2">
                   <h2>Ends at:</h2>
                 </div>
-                <div class="col-6 border-bottom pt-2">
+                <div class="col-6 border-bottom pt-2 centered">
                   <h3><%= contract.ends_at&.strftime('%d %b %Y') %></h3>
                 </div>
                 <div class="col-6 border-bottom pt-2">
                   <h2>Contract source:</h2>
                 </div>
-                <div class="col-6 border-bottom pt-2">
+                <div class="col-6 border-bottom pt-2 centered">
                   <h3><%= contract.source.capitalize %></h3>
                 </div>
                 <% unless contract.pdf_contract.attached? %>
