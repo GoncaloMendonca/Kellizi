@@ -43,6 +43,12 @@
   margin-top: 5%;
  }
 
+ .about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+ }
+
  .highligthed {
   padding: 2px 15px 4px;
   font-style: normal;

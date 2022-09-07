@@ -33,6 +33,7 @@
               <%= f.input :timing,
                           label: "Payment frequency",
                           as: :radio_buttons,
+                          checked: @contract.timing,
                           collection_wrapper_tag: "div",
                           collection_wrapper_class: "timing-wrapper",
                           item_wrapper_class: "timing-item",
@@ -48,6 +49,7 @@
                           checked: true,
                           as: :radio_buttons,
                           label: "Insurance active?",
+                          checked: @contract.active,
                           wrapper_html: {
                             data: { form_display_target: "input" }
                           }
