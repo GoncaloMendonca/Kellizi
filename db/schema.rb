@@ -66,7 +66,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_151615) do
     t.bigint "product_id", null: false
     t.bigint "user_id"
     t.bigint "coverage_id"
+    t.bigint "company_id", null: false
     t.string "timing"
+    t.index ["company_id"], name: "index_contracts_on_company_id"
     t.index ["coverage_id"], name: "index_contracts_on_coverage_id"
     t.index ["product_id"], name: "index_contracts_on_product_id"
     t.index ["user_id"], name: "index_contracts_on_user_id"
@@ -116,4 +118,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_151615) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "contracts", "companies"
 end
