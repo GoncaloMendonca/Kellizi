@@ -2,13 +2,17 @@
   position: absolute;
   right: -16px;
   top: -13px;
-  padding: 10px 17px;
+  padding: 10px;
   background-color: #C471ED;
   border-radius: 50px;
   color: white;
   font-weight: bolder;
+  width: 45px;
+  height: 45px;
+  border: 5px solid white;
 }
 
 .pink_bubble p {
   margin-bottom: 0;
+  line-height: 15px;
 }
