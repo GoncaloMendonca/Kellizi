@@ -5,7 +5,7 @@
 </div>
 
 <div class="container">
-  <div class="insurance-card p-2">
+  <div class="insurance-card" style="padding-top: 20px; padding-left: 20px; padding-right: 20px; padding-bottom: 20px">
     <div class="row">
       <div class="col-3">
         <div class="logo">
@@ -13,33 +13,32 @@
         </div>
       </div>
       <div class="col-5">
-        <h1><%= @contract.product.name %></h1>
-        <h2>Category: <%= @contract.product.category.name %></h2>
-        <h2>Company: <%= @contract.product.company.name %></h2>
+        <h1><strong><%= @contract.product.name %></strong></h1>
+        <h2>Category: <strong><%= @contract.product.category.name %></strong></h2>
         <% if @contract.source === "work" %>
-          <h2><%= "No cost" %></h2>
+          <h2><strong><%= "No cost" %></strong></h2>
         <% elsif @contract.timing === "Monthly" %>
           <h2><%= @contract.price %> €/month</h2>
           <h2>Frequency: <%= @contract.timing %></h2>
         <% elsif @contract.timing === "Annually" %>
           <h2><%= @contract.price %> €/year</h2>
-          <h2>Frequency: <%= @contract.timing %></h2>
+          <h2>Frequency: <strong><%= @contract.timing %></strong></h2>
         <% elsif ((@contract.ends_at.to_time.to_i - @contract.starts_at.to_time.to_i) / 3600 / 24) > 365 %>
           <h2><%= @contract.price %> € for <%= ((@contract.ends_at.to_time.to_i - @contract.starts_at.to_time.to_i) / 3600 / 24) / 365 %> year(s)</h2>
-          <h2>Frequency: <%= @contract.timing %></h2>
+          <h2>Frequency: <strong><%= @contract.timing %></strong></h2>
         <% elsif ((@contract.ends_at.to_time.to_i - @contract.starts_at.to_time.to_i) / 3600 / 24) > 30 %>
           <h2><%= @contract.price %> € for <%= ((@contract.ends_at.to_time.to_i - @contract.starts_at.to_time.to_i) / 3600 / 24) / 30 %> month(s)</h2>
-          <h2>Frequency: <%= @contract.timing %></h2>
+          <h2>Frequency: <strong><%= @contract.timing %></strong></h2>
         <% else %>
           <h2><%= @contract.price %> € for <%= ((@contract.ends_at.to_time.to_i - @contract.starts_at.to_time.to_i) / 3600 / 24) %> day(s)</h2>
-          <h2>Frequency: <%= @contract.timing %></h2>
+          <h2>Frequency: <strong><%= @contract.timing %></strong></h2>
         <% end %>
         <h2>
           Contract pdf:
           <% if  @contract.pdf_contract.attached? %>
             <%= link_to @contract.pdf_contract.filename, rails_blob_path(@contract.pdf_contract, disposition: 'attachment') %>
           <% else %>
-            N/A
+            <strong>N/A</strong>
             <h4 style="font-size: smaller"><i class="fa-solid fa-triangle-exclamation"></i>Warning no pdf contract, means no details.</h4>
           <% end %>
         </h2>
@@ -48,7 +47,7 @@
           <% if  @contract.pdf_certificate.attached? %>
             <%= link_to @contract.pdf_certificate.filename, rails_blob_path(@contract.pdf_certificate, disposition: 'attachment') %>
           <% else %>
-            N/A
+            <strong>N/A</strong>
           <% end %>
         </h2>
       </div>
@@ -59,35 +58,35 @@
           </div>
           <div class="col-6 border-bottom pt-2 centered">
             <% if @contract.active %>
-              <h3 class="rounded-border pink text-align-center">Active</h3>
+              <h3 class="rounded-border pink text-align-center"><strong>Active</strong></h3>
             <% else %>
-              <h3 class="rounded-border gray">Inactive</h3>
+              <h3 class="rounded-border gray"><strong>Inactive</strong></h3>
             <% end %>
           </div>
           <div class="col-6 border-bottom pt-2">
             <h2>Starts at:</h2>
           </div>
           <div class="col-6 border-bottom pt-2 centered">
-            <h3><%= @contract.starts_at.strftime('%d %b %Y') %></h3>
+            <h3><strong><%= @contract.starts_at.strftime('%d %b %Y') %></strong></h3>
           </div>
           <div class="col-6 border-bottom pt-2">
             <h2>Ends at:</h2>
           </div>
           <div class="col-6 border-bottom pt-2 centered">
-            <h3><%= @contract.ends_at&.strftime('%d %b %Y') %></h3>
+            <h3><strong><%= @contract.ends_at&.strftime('%d %b %Y') %></strong></h3>
           </div>
           <div class="col-6 border-bottom pt-2">
             <h2>Contract source:</h2>
           </div>
           <div class="col-6 border-bottom pt-2 centered">
-          <h3><%= @contract.source.capitalize %></h3>
+          <h3><strong><%= @contract.source.capitalize %></strong></h3>
           </div>
         </div>
       </div>
     </div>
     <hr>
     <%# Accordion %>
-    <h1>What guarantees are you insured for?</h1>
+    <h1 style="padding-top: 10px">What guarantees are you insured for?</h1>
     <div class="accordion accordion-flush" id="accordionFlushExample">
       <% if  @contract.pdf_contract.attached? %>
         <div class="accordion-item">

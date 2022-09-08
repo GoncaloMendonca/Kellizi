@@ -34,8 +34,8 @@
             </div>
 
             <div class="col-5">
-              <h1><%= contract.product.category.name %> - <%= contract.product.name %></h1>
-              <h2><%= contract.product.company.name %></h2>
+              <h1><strong><%= contract.product.category.name %> - <%= contract.product.name %></strong></h1>
+              <h2><strong><%= contract.product.company.name %></strong></h2>
               <% if contract.source === "work" %>
                 <h2><%= "No cost" %></h2>
               <% elsif contract.timing === "Monthly" %>
@@ -52,27 +52,12 @@
                 <h2><%= contract.price %> €</h2>
 
               <% end %>
-              <div class="row">
-                <div class="col-2">
+              <div class="d-flex" style="margin: 40px 0px;">
                   <%= link_to "", contract_path(contract), class:"fa-solid fa-magnifying-glass" %>
-                </div>
-                <div class="col-10" style="display: flex; align-items: center">
-                  <h2><%= link_to "Details", contract_path(contract), class:"text-decoration-none" %></h2>
-                </div>
-                <div class="col-2">
-                  <%= link_to "", edit_contract_path(contract), class:"fa-solid fa-file-pen" %>
-                </div>
-                <div class="col-10" style="display: flex; align-items: center">
-                  <h2><%= link_to "Update", edit_contract_path(contract), class:"text-decoration-none" %></h2>
-                </div>
-                <div class="col-2">
+                  <%= link_to "", edit_contract_path(contract), class:"fa-solid fa-file-pen", style:"margin:0px 50px" %>
                   <%= link_to "", contract_path(contract),  class:"fa-solid fa-trash",
                                                             data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this contract?"} %>
-                </div>
-                <div class="col-10" style="display: flex; align-items: center">
-                  <h2><%= link_to "Delete", contract_path(contract),  class:"text-decoration-none",
-                                                            data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this contract?"} %></h2>
-                </div>
+
               </div>
             </div>
 
@@ -83,28 +68,28 @@
                 </div>
                 <div class="col-6 border-bottom pt-2 centered">
                   <% if contract.active %>
-                    <h2 class="pink" style="text-align: center;">Active</h2>
+                    <h2 class="pink" style="text-align: center;"><strong>Active</strong></h2>
                   <% else %>
-                    <h2 class="gray", style="text-align: center;">Inactive</h2>
+                    <h2 class="gray", style="text-align: center;"><strong>Inactive</strong></h2>
                   <% end %>
                 </div>
                 <div class="col-6 border-bottom pt-2">
                   <h2>Starts at:</h2>
                 </div>
                 <div class="col-6 border-bottom pt-2 centered" style="text-align: center;">
-                  <h2><%= contract.starts_at.strftime('%d %b %Y') %></h2>
+                  <h2><strong><%= contract.starts_at.strftime('%d %b %Y') %></strong></h2>
                 </div>
                 <div class="col-6 border-bottom pt-2">
                   <h2>Ends at:</h2>
                 </div>
                 <div class="col-6 border-bottom pt-2 centered" style="text-align: center;">
-                  <h2><%= contract.ends_at&.strftime('%d %b %Y') %></h2>
+                  <h2><strong><%= contract.ends_at&.strftime('%d %b %Y') %></strong></h2>
                 </div>
                 <div class="col-6 border-bottom pt-2">
                   <h2>Contract source:</h2>
                 </div>
                 <div class="col-6 border-bottom pt-2 centered" style="text-align: center;">
-                  <h2><%= contract.source.capitalize %></h2>
+                  <h2><strong><%= contract.source.capitalize %></strong></h2>
                 </div>
                 <% unless contract.pdf_contract.attached? %>
                   <h4><i class="fa-solid fa-triangle-exclamation"></i> No pdf contract</h4>
