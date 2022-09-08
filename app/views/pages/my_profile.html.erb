@@ -76,12 +76,14 @@
       </div>
     </div>
       <div class = "personnal-data">
+        <div class="chart-text">
           <ul>
             <li> You have <strong><%= Contract.where("contracts.user_id = #{current_user.id}").count %></strong> contracts downloaded in Kellizi. </li>
             <li> Among these contracts, you have <strong><%= Contract.where("contracts.user_id = #{current_user.id}").where("contracts.active = true").count %></strong> active and <strong><%= Contract.where("contracts.user_id = #{current_user.id}").where("contracts.active = false").count %></strong> inactive. </li>
             <li> Also among these contracts, you have <strong><%=  Contract.where("contracts.user_id = #{current_user.id}").group(:source).count.first[1] %></strong> personnal and <strong><%= Contract.where("contracts.user_id = #{current_user.id}").group(:source).count.first[1][0] %></strong> linked to your work. </li>
             <li> You are spending <strong><%= Contract.where("contracts.user_id = #{current_user.id}").sum(:price) %> €</strong> per month on your contracts.</li>
           </ul>
+          </div>
       </div>
   </div>
   <hr>
