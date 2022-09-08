@@ -17,6 +17,7 @@ class ContractsController < ApplicationController
   end
 
   def show
+    @coverqge = Coverage.find_by(contract: @contract)
     authorize @contract
   end
 

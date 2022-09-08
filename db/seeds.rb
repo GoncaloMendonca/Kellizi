@@ -134,11 +134,12 @@ User.all.each do |user|
       active: [true, false].sample,
       product:,
       user:,
-      timing: ["Monthly", "Annualy", "Specific period"].sample
+      timing: ["Monthly", "Annualy", "Specific period"].sample,
+      company: product.company
     )
   end
 
-  Contract.create!(
+  contract = Contract.create!(
     price: 41,
     source: 0,
     starts_at: "2022-07-30",
@@ -146,7 +147,8 @@ User.all.each do |user|
     active: true,
     product: Product.find_by(name: "Housing", company: Company.find_by(name: "Yuzzu")),
     user:,
-    timing: "Annualy"
+    timing: "Annualy",
+    company: Company.find_by(name: "Yuzzu")
   )
 
   puts "Yuzzu contract created"
@@ -159,9 +161,26 @@ User.all.each do |user|
     active: true,
     product: Product.find_by(name: "Cyber security", company: Company.find_by(name: "Stoïk")),
     user:,
-    timing: "Monthly"
+    timing: "Monthly",
+    company: Company.find_by(name: "Stoïk")
   )
 
   puts "Stoïk contract created"
+
+  coverages = [
+    "Fire, electrical incident. Under your proof. In your temporary accommodation.",
+    "Unexpected collision with your home. In your possession during.",
+    "Damage due to a natural event. In your temporary accommodation (rental).",
+    "Burglary, vandalism and malicious damage. An assault with threats or brutality. In your garden or grounds"
+  ]
+
+  Coverage.create!(
+    conditions: coverages[0],
+    conditionb: coverages[1],
+    conditionc: coverages[2],
+    conditiond: coverages[3],
+    contract:
+  )
 end
+
 puts 'Finished!'
