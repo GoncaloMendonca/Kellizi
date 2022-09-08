@@ -80,9 +80,11 @@
                           as: :file %>
               <%= f.input :pdf_certificate,
                           as: :file %>
+              <div class="d-flex" style="flex-direction: column">
               <%= f.button :button,
                           class: 'btn-grad-light' %>
-              <%= link_to "Back", contract_path(@contract.id), class:"btn-gray position-absolute", style:"width: 243px; margin-left: 21px; right:16%" %>
+              <%= link_to "Back", contract_path(@contract.id), class:"btn-gray", style:"width: 243px;" %>
+              </div>
             <% end %>
         </div>
     </div>
