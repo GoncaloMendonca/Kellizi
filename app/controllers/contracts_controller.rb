@@ -75,7 +75,7 @@ class ContractsController < ApplicationController
     params.require(:contract).permit(
       :price, :source, :starts_at, :ends_at, :status, :created_at,
       :updated_at, :pdf_contract, :pdf_certificate,
-      :company_id, :product_id, :active
+      :company_id, :product_id, :active, :timing
     )
   end
 
