@@ -4,9 +4,7 @@ class Contract < ApplicationRecord
 
   belongs_to :user
   belongs_to :product
-  belongs_to :company
 
-  validates :company_id, presence: true
   validates :product_id, presence: true
   validates :starts_at, presence: true
 

@@ -39,43 +39,47 @@ categories = [
 companies = [
    {
     name: "Matmut",
-    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472773/production/logo-matmut_qd63o2.webp"
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472773/Source/logo-matmut_qd63o2.webp"
    },
    {
     name: "Axa",
-    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472773/production/axa_ll0ywb.png"
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472773/Source/axa_ll0ywb.png"
    },
    {
     name: "Macif",
-    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472773/production/Macif_ea1eeo.png"
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472773/Source/Macif_ea1eeo.png"
    },
    {
     name: "Stoïk",
-    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472773/production/Stoik_p46jlx.png"
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472773/Source/Stoik_p46jlx.png"
    },
    {
     name: "Allianz",
-    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472772/production/allianz_sxy4hy.svg"
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472772/Source/allianz_sxy4hy.svg"
    },
    {
     name: "GMF",
-    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472773/production/GMF_wwzdmc.png"
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472773/Source/GMF_wwzdmc.png"
    },
    {
     name: "Aviva",
-    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472772/production/Aviva_ts1tuo.png"
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472772/Source/Aviva_ts1tuo.png"
    },
    {
     name: "BNP Paribas Cardif",
-    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472772/production/BNPPF_Cardif_kgypnq.svg"
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472772/Source/BNPPF_Cardif_kgypnq.svg"
    },
    {
     name: "Yuzzu",
-    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472774/production/yuzzu_o6orki.avif"
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472774/Source/yuzzu_o6orki.avif"
    },
    {
     name: "AG insurance",
-    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472773/production/AG-Insurance_pq7uxn.jpg"
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662472773/Source/AG-Insurance_pq7uxn.jpg"
+   },
+   {
+    name: "Europ Assistance",
+    logo: "https://res.cloudinary.com/kellizi/image/upload/v1662645773/Source/EuropAssistance_le1fru.png"
    }
 ]
 
@@ -91,12 +95,6 @@ companies.each do |company|
   insurance.save
   puts "Company created."
 end
-
-# products = [
-#   "Housing", "Cyber security", "Car", "Motorbike", "Bike", "Pets", "Child", "Covid",
-#   "Loan", "Card", "Household appliances", "Risky sport abroad", "Emergency repatriation",
-#   "Legal protection"
-# ]
 
 products = [
   { name: "Car", category: "Mobility" },
@@ -136,9 +134,34 @@ User.all.each do |user|
       active: [true, false].sample,
       product:,
       user:,
-      timing: ["Monthly", "Annualy", "Specific period"].sample,
-      company: product.company, # do we need to store the company id here?
+      timing: ["Monthly", "Annualy", "Specific period"].sample
     )
   end
+
+  Contract.create!(
+    price: 41,
+    source: 0,
+    starts_at: "2022-07-30",
+    ends_at: "2023-07-30",
+    active: true,
+    product: Product.find_by(name: "Housing", company: Company.find_by(name: "Yuzzu")),
+    user:,
+    timing: "Annualy"
+  )
+
+  puts "Yuzzu contract created"
+
+  Contract.create!(
+    price: 91,
+    source: 0,
+    starts_at: "2022-07-30",
+    ends_at: "2023-07-30",
+    active: true,
+    product: Product.find_by(name: "Cyber security", company: Company.find_by(name: "Stoïk")),
+    user:,
+    timing: "Monthly"
+  )
+
+  puts "Stoïk contract created"
 end
 puts 'Finished!'
