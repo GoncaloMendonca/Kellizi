@@ -9,6 +9,7 @@
         <div class="row" data-controller="form-display company-products" data-company-products-hash-value="<%= @company_products %>">
             <%= simple_form_for @contract, data: {turbo: false}, class:"position-relative" do |f| %>
               <%= f.association :company,
+                                label: "Insurer name",
                                 include_blank: false,
                                 include_hidden: false,
                                 input_html: {
