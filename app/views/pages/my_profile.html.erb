@@ -56,7 +56,8 @@
                               .where("products.id = contracts.product_id")
                               .where("contracts.user_id = #{current_user.id}")
                               .group(:name)
-                              .count %>
+                              .count,
+                              colors: ["#6388F6", "#009FFF", "#C471ED", "#a5bbfc", "#d9a0f6", "#893ab1"] %>
       </div>
       <div class ="col-6">
         <div class ="charts-title">
@@ -68,7 +69,8 @@
                                 .where("products.id = contracts.product_id")
                                 .where("contracts.user_id = #{current_user.id}")
                                 .group(:name)
-                                .sum(:price) %>
+                                .sum(:price),
+                                colors: ["#6388F6", "#009FFF", "#C471ED", "#a5bbfc", "#d9a0f6", "#893ab1"] %>
       </div>
     </div>
       <div class = "personnal-data">
