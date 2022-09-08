@@ -66,3 +66,21 @@
 a:hover {
   color:black;
 }
+
+.columnn {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.roww:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.flex-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
