@@ -9,24 +9,24 @@
       <div class="row">
       <div class="col-6">
           <% if current_user.first_name.present? || current_user.last_name.present? %>
-            <h5><strong>Name - </strong><%= current_user.first_name %> <%= current_user.last_name %></h5>
+            <h5><strong>Name : </strong><%= current_user.first_name %> <%= current_user.last_name %></h5>
           <% else %>
             <h4><strong>Name</strong></h4>
           <% end %>
           <% if current_user.family_status.present? %>
-            <h5><strong>Family Status - </strong><%= current_user.family_status %></h5>
+            <h5><strong>Family Status : </strong><%= current_user.family_status %></h5>
           <% else %>
-            <h5><strong>Family Status - </strong></h5>
+            <h5><strong>Family Status : </strong></h5>
           <% end %>
           <% if current_user.address.present? %>
-            <h5><strong>Address - </strong><%= current_user.address %></h5>
+            <h5><strong>Address : </strong><%= current_user.address %></h5>
           <% else %>
-            <h5><strong>Address - </strong></h5>
+            <h5><strong>Address : </strong></h5>
           <% end %>
           <% if current_user.gender.present? %>
-            <h2><strong>Gender - </strong><%= current_user.gender %></h2>
+            <h2><strong>Gender : </strong><%= current_user.gender %></h2>
           <% else %>
-            <h5><strong>Gender - </strong><i class="fa-solid fa-venus-mars"></i></h5>
+            <h5><strong>Gender : </strong><i class="fa-solid fa-venus-mars"></i></h5>
           <% end %>
           </div>
           <div class="col-6">
@@ -34,16 +34,16 @@
           <% if current_user.family_status.present? %>
             <div class="col-6"><h5><strong>Phone Number - </strong></h5></div><div class="col-6"><h5><%= current_user.phone_number %></h5></div>
           <% else %>
-            <h5><strong>Phone Number - </strong></h5>
+            <h5><strong>Phone Number : </strong></h5>
           <% end %>
           <hr>
           <% if current_user.birth_date.present? %>
-            <div class="col-6"><h5><strong>Birth date - </strong></h5></div><div class="col-6"><h5><%= current_user.birth_date.strftime('%d %b %Y') %></h5></div>
+            <div class="col-6"><h5><strong>Birth date : </strong></h5></div><div class="col-6"><h5><%= current_user.birth_date.strftime('%d %b %Y') %></h5></div>
           <% else %>
-            <h5><strong>Birth date - </strong></h5>
+            <h5><strong>Birth date : </strong></h5>
           <% end %>
           <hr>
-          <div class="col-6"><h5><strong>Email - </strong></h5></div><div class="col-6"><h5><%= current_user.email %></h5></div>
+          <div class="col-6"><h5><strong>Email : </strong></h5></div><div class="col-6"><h5><%= current_user.email %></h5></div>
           </div>
           </div>
       </div>
