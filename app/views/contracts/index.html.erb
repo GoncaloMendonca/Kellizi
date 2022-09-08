@@ -21,6 +21,11 @@
       <% end %>
     </div>
       <% @contracts.each do |contract| %>
+        <%if contract.ends_at %>
+          <% contract_duration = ((contract.ends_at&.to_time&.to_i - contract.starts_at.to_time.to_i) / 3600 / 24) %>
+        <% else %>
+          <% contract_duration = 0 %>
+        <% end %>
           <div class="row insurance-card insurance-card-hover p-3">
             <div class="col-3">
               <div class="logo">
@@ -37,12 +42,15 @@
                 <h2><%= contract.price %> €/month</h2>
               <% elsif contract.timing === "Annually" %>
                 <h2><%= contract.price %> €/year</h2>
-              <% elsif ((contract.ends_at.to_time.to_i - contract.starts_at.to_time.to_i) / 3600 / 24) > 365 %>
-                <h2><%= contract.price %> € for <%= ((contract.ends_at.to_time.to_i - contract.starts_at.to_time.to_i) / 3600 / 24) / 365 %> year(s)</h2>
-              <% elsif ((contract.ends_at.to_time.to_i - contract.starts_at.to_time.to_i) / 3600 / 24) > 30 %>
-                <h2><%= contract.price %> € for <%= ((contract.ends_at.to_time.to_i - contract.starts_at.to_time.to_i) / 3600 / 24) / 30 %> month(s)</h2>
+              <% elsif contract_duration > 365 %>
+                <h2><%= contract.price %> € for <%= contract_duration / 365 %> year(s)</h2>
+              <% elsif contract_duration > 30 %>
+                <h2><%= contract.price %> € for <%= contract_duration / 30 %> month(s)</h2>
+              <% elsif contract_duration > 0 %>
+                <h2><%= contract.price %> € for <%= contract_duration %> day(s)</h2>
               <% else %>
-                <h2><%= contract.price %> € for <%= ((contract.ends_at.to_time.to_i - contract.starts_at.to_time.to_i) / 3600 / 24) %> day(s)</h2>
+                <h2><%= contract.price %> €</h2>
+
               <% end %>
               <div class="row">
                 <div class="col-2">

@@ -13,6 +13,7 @@ class ContractsController < ApplicationController
     end
 
     @contracts = @contracts.search_by_company_and_product(params[:query]) if params[:query].present?
+    @contracts.order!(active: :desc)
   end
 
   def show
