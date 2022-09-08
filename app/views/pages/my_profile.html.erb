@@ -5,41 +5,45 @@
     </div>
   </div>
   <div class="container">
-  <div class="row">
-  <div class="insurance-card p-2">
-  <% if current_user.first_name.present? || current_user.last_name.present? %>
-    <h5>Name: <%= current_user.first_name %> <%= current_user.last_name %></h5>
-  <% else %>
-    <h4>Name</h4>
-  <% end %>
-  <% if current_user.gender.present? %>
-    <h2>Gender: <%= current_user.gender %></h2>
-  <% else %>
-    <h2>Gender: <i class="fa-solid fa-venus-mars"></i></h2>
-  <% end %>
-  <% if current_user.phone_number.present? %>
-    <h2>Phone Number: <%= current_user.phone_number %></h2>
-  <% else %>
-    <h2>Phone Number: </h2>
-  <% end %>
-  <% if current_user.address.present? %>
-    <h2>Address: <%= current_user.address %></h2>
-  <% else %>
-    <h2>Address: </h2>
-  <% end %>
-  <% if current_user.family_status.present? %>
-    <h2>Family Status: <%= current_user.family_status %></h2>
-  <% else %>
-    <h2>Family Status: </h2>
-  <% end %>
-  <% if current_user.birth_date.present? %>
-    <h2>Birth date: <%= current_user.birth_date %></h2>
-  <% else %>
-    <h2>Birth date: </h2>
-  <% end %>
-  <h2>Email: <%= current_user.email %></h2>
-  </div>
-  </div>
+    <div class="insurance-card p-2">
+      <div class="roww">
+        <div class="columnn">
+          <% if current_user.first_name.present? || current_user.last_name.present? %>
+            <h5><strong>Name: </strong><%= current_user.first_name %> <%= current_user.last_name %></h5>
+          <% else %>
+            <h4><strong>Name</strong></h4>
+          <% end %>
+          <% if current_user.gender.present? %>
+            <h2><strong>Gender: </strong><%= current_user.gender %></h2>
+          <% else %>
+            <h5><strong>Gender: </strong><i class="fa-solid fa-venus-mars"></i></h5>
+          <% end %>
+          <% if current_user.phone_number.present? %>
+            <h5><strong>Phone Number: </strong><%= current_user.phone_number %></h5>
+          <% else %>
+            <h5><strong>Phone Number: </strong></h5>
+          <% end %>
+          <% if current_user.address.present? %>
+            <h5><strong>Address: </strong><%= current_user.address %></h5>
+          <% else %>
+            <h5><strong>Address: </strong></h5>
+          <% end %>
+        </div>
+        <div class="columnn">
+          <% if current_user.family_status.present? %>
+            <h5><strong>Family Status: </strong><%= current_user.family_status %></h5>
+          <% else %>
+            <h5><strong>Family Status: </strong></h5>
+          <% end %>
+          <% if current_user.birth_date.present? %>
+            <h5><strong>Birth date: </strong><%= current_user.birth_date %></h5>
+          <% else %>
+            <h5><strong>Birth date: </strong></h5>
+          <% end %>
+          <h5><strong>Email: </strong><%= current_user.email %></h5>
+        </div>
+      </div>
+    </div>
   <div class="chart">
     <div class = "row">
       <div class ="col-6">
@@ -69,7 +73,7 @@
     </div>
   </div>
   <hr>
-  <%= link_to "Edit Profile", "edit_profile", class: "btn-gray"  %>
-  <%= link_to "Back", root_path, class:"btn-gray position-absolute", style:"width: 100px; margin-left: 21px;" %>
+  <%= link_to "Back", root_path, class:"btn-gray", style:"width: 200px"  %>
+  <%= link_to "Edit Profile", "edit_profile", class: "btn-gray", style:"width: 200px; margin-left: 21px;"  %>
 </div>
 </div>
