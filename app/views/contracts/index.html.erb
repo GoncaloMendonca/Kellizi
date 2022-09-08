@@ -57,13 +57,13 @@
                   <%= link_to "", contract_path(contract), class:"fa-solid fa-magnifying-glass" %>
                 </div>
                 <div class="col-10" style="display: flex; align-items: center">
-                  <h2><%= link_to "Contract details", contract_path(contract), class:"text-decoration-none" %></h2>
+                  <h2><%= link_to "Details", contract_path(contract), class:"text-decoration-none" %></h2>
                 </div>
                 <div class="col-2">
                   <%= link_to "", edit_contract_path(contract), class:"fa-solid fa-file-pen" %>
                 </div>
                 <div class="col-10" style="display: flex; align-items: center">
-                  <h2><%= link_to "Contract update", edit_contract_path(contract), class:"text-decoration-none" %></h2>
+                  <h2><%= link_to "Update", edit_contract_path(contract), class:"text-decoration-none" %></h2>
                 </div>
                 <div class="col-2">
                   <%= link_to "", contract_path(contract),  class:"fa-solid fa-trash",
@@ -85,7 +85,7 @@
                   <% if contract.active %>
                     <h2 class="pink" style="text-align: center;">Active</h2>
                   <% else %>
-                    <h2 class="gray", style="color:white !important text-align: center;">Inactive</h2>
+                    <h2 class="gray", style="text-align: center;">Inactive</h2>
                   <% end %>
                 </div>
                 <div class="col-6 border-bottom pt-2">
