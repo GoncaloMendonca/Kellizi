@@ -18,10 +18,15 @@
     </div>
   </div>
   <div class="row" style="justify-content: center;">
-    <% Category.all.each do |category| %>
+    <% @categories.each do |category| %>
       <div class="col-lg-3 col-md-4 col-sm-4 mt-3">
         <div class="dashboard-card text-center mb-3 pt-3 px-3">
         <%= link_to contracts_path(category: category.name) do %>
+          <% number_contracts = Contract.all
+                                        .joins(product: :category)
+                                        .where("categories.id = #{category.id}")
+                                        .where(active: true, user: current_user)
+                                        .count %>
           <div class="card-img-top pb-4">
             <% if category.name == "House" %>
               <i class="fa-solid fa-house-chimney-user dashboard_icons"></i>
@@ -47,6 +52,11 @@
             <div class="card-body mt-3">
               <span id="categories"><%= category.name%></span>
             </div>
+            <% if number_contracts > 0 %>
+              <div class="pink_bubble">
+                <p><%= number_contracts %></p>
+              </div>
+            <% end %>
           </div>
           <% end %>
         </div>
