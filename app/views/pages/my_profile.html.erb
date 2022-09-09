@@ -48,7 +48,7 @@
         </div>
       </div>
     </div>
-    <div class="chart">
+    <div class="chart pb-4">
       <div class = "row">
         <div class ="col-6">
           <div class ="charts-title">
@@ -79,29 +79,41 @@
       </div>
     </div>
     <div class="row my-profile-cards", style="display: flex;justify-content: space-between">
-      <div class="col-3 mx-4 px-4 mb-3 my-profile-card">
-        <h5>Number of contracts</h5>
-        <p><%= Contract.where("contracts.user_id = #{current_user.id}").count %></p>
+      <div class="col-4">
+        <div class="my-profile-card mb-3">
+          <h5>Number of contracts</h5>
+          <p><%= Contract.where("contracts.user_id = #{current_user.id}").count %></p>
+        </div>
       </div>
-      <div class="col-3 mx-4 px-4 mb-3 my-profile-card">
-        <h5>Active contracts</h5>
-        <p><%= Contract.where("contracts.user_id = #{current_user.id}").where("contracts.active = true").count %></p>
+      <div class="col-4">
+        <div class="my-profile-card mb-3">
+          <h5>Active contracts</h5>
+          <p><%= Contract.where("contracts.user_id = #{current_user.id}").where("contracts.active = true").count %></p>
+        </div>
       </div>
-      <div class="col-3 mx-4 px-4 mb-3 my-profile-card">
-        <h5>Personnal contracts</h5>
-        <p><%=  Contract.where("contracts.user_id = #{current_user.id}").group(:source).count.first[1] %></p>
+      <div class="col-4">
+        <div class="my-profile-card mb-3">
+          <h5>Personnal contracts</h5>
+          <p><%=  Contract.where("contracts.user_id = #{current_user.id}").group(:source).count.first[1] %></p>
+        </div>
       </div>
-      <div class="col-3 mx-4 px-4 mb-3 my-profile-card">
-        <h5>€ Spent/month</h5>
-        <p><%= Contract.where("contracts.user_id = #{current_user.id}").sum(:price) %></p>
+      <div class="col-4">
+        <div class="my-profile-card mb-3">
+          <h5>€ Spent/month</h5>
+          <p><%= Contract.where("contracts.user_id = #{current_user.id}").sum(:price) %></p>
+        </div>
       </div>
-      <div class="col-3 mx-4 px-4 mb-3 my-profile-card">
-        <h5>Inactive contracts</h5>
-        <p><%= Contract.where("contracts.user_id = #{current_user.id}").where("contracts.active = false").count %></p>
+      <div class="col-4">
+        <div class="my-profile-card mb-3">
+          <h5>Inactive contracts</h5>
+          <p><%= Contract.where("contracts.user_id = #{current_user.id}").where("contracts.active = false").count %></p>
+        </div>
       </div>
-      <div class="col-3 mx-4 px-4 mb-3 my-profile-card">
-        <h5>Work contracts</h5>
-        <p><%= Contract.where("contracts.user_id = #{current_user.id}").group(:source).count.first[1][0] %></p>
+      <div class="col-4">
+        <div class="my-profile-card mb-3">
+          <h5>Work contracts</h5>
+          <p><%= Contract.where("contracts.user_id = #{current_user.id}").group(:source).count.first[1][0] %></p>
+        </div>
       </div>
     </div>
     <%= link_to "Back", root_path, class:"btn-gray", style:"width: 200px"  %>
