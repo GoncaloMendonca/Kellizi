@@ -19,3 +19,35 @@
     color: #C471ED;
   }
 }
+
+.my-profile-cards {
+  margin-bottom: 20px;
+}
+.my-profile-card {
+  color:black;
+  background-color: $white;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  border-radius: 10px;
+  // margin: 5px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.my-profile-card p {
+  color: $blue;
+  font-weight: bolder;
+  font-size: 25px;
+  // width: 45px;
+  // height: 45px;
+  margin-bottom: 0;
+  // line-height: 15px;
+  //     display: flex;
+  //   justify-content: space-between;
+  //   align-items: center;
+}
+
+.my-profile-card h5 {
+  font-size: 20px;
+}
