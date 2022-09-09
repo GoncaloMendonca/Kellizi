@@ -7,7 +7,7 @@
   <div class="container">
     <div class="insurance-card p-2">
       <div class="row" style="padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 10px">
-      <div class="col-6">
+        <div class="col-6">
           <% if current_user.first_name.present? || current_user.last_name.present? %>
             <h5><strong>Name : </strong><%= current_user.first_name %> <%= current_user.last_name %></h5>
           <% else %>
@@ -45,50 +45,66 @@
           <hr>
           <div class="col-6"><h5><strong>Email : </strong></h5></div><div class="col-6"><h5><%= current_user.email %></h5></div>
           </div>
-          </div>
+        </div>
       </div>
     </div>
-  <div class="chart">
-    <div class = "row">
-      <div class ="col-6">
-        <div class ="charts-title">
-          <h4>Distribution of categories by number of contracts</h4>
-        </div>
-        <%= pie_chart Category.joins(:products)
-                              .where("categories.id = products.category_id")
-                              .joins(:contracts)
-                              .where("products.id = contracts.product_id")
-                              .where("contracts.user_id = #{current_user.id}")
-                              .group(:name)
-                              .count,
-                              colors: ["#6388F6", "#009FFF", "#C471ED", "#a5bbfc", "#d9a0f6", "#893ab1"] %>
-      </div>
-      <div class ="col-6">
-        <div class ="charts-title">
-          <h4>Distribution of categories by money spent per month</h4>
-        </div>
+    <div class="chart">
+      <div class = "row">
+        <div class ="col-6">
+          <div class ="charts-title">
+            <h4>Number of contracts by category</h4>
+          </div>
           <%= pie_chart Category.joins(:products)
                                 .where("categories.id = products.category_id")
                                 .joins(:contracts)
                                 .where("products.id = contracts.product_id")
                                 .where("contracts.user_id = #{current_user.id}")
                                 .group(:name)
-                                .sum(:price),
+                                .count,
                                 colors: ["#6388F6", "#009FFF", "#C471ED", "#a5bbfc", "#d9a0f6", "#893ab1"] %>
+        </div>
+        <div class ="col-6">
+          <div class ="charts-title">
+            <h4>Spent per month per category</h4>
+          </div>
+            <%= pie_chart Category.joins(:products)
+                                  .where("categories.id = products.category_id")
+                                  .joins(:contracts)
+                                  .where("products.id = contracts.product_id")
+                                  .where("contracts.user_id = #{current_user.id}")
+                                  .group(:name)
+                                  .sum(:price),
+                                  colors: ["#6388F6", "#009FFF", "#C471ED", "#a5bbfc", "#d9a0f6", "#893ab1"] %>
+        </div>
       </div>
     </div>
-      <div class = "personnal-data">
-        <div class="chart-text">
-          <ul>
-            <li> You have <strong><%= Contract.where("contracts.user_id = #{current_user.id}").count %></strong> contracts downloaded in Kellizi. </li>
-            <li> Among these contracts, you have <strong><%= Contract.where("contracts.user_id = #{current_user.id}").where("contracts.active = true").count %></strong> active and <strong><%= Contract.where("contracts.user_id = #{current_user.id}").where("contracts.active = false").count %></strong> inactive. </li>
-            <li> Also among these contracts, you have <strong><%=  Contract.where("contracts.user_id = #{current_user.id}").group(:source).count.first[1] %></strong> personnal and <strong><%= Contract.where("contracts.user_id = #{current_user.id}").group(:source).count.first[1][0] %></strong> linked to your work. </li>
-            <li> You are spending <strong><%= Contract.where("contracts.user_id = #{current_user.id}").sum(:price) %> €</strong> per month on your contracts.</li>
-          </ul>
-          </div>
+    <div class="row my-profile-cards", style="display: flex;justify-content: space-between">
+      <div class="col-3 mx-4 px-4 mb-3 my-profile-card">
+        <h5>Number of contracts</h5>
+        <p><%= Contract.where("contracts.user_id = #{current_user.id}").count %></p>
       </div>
+      <div class="col-3 mx-4 px-4 mb-3 my-profile-card">
+        <h5>Active contracts</h5>
+        <p><%= Contract.where("contracts.user_id = #{current_user.id}").where("contracts.active = true").count %></p>
+      </div>
+      <div class="col-3 mx-4 px-4 mb-3 my-profile-card">
+        <h5>Personnal contracts</h5>
+        <p><%=  Contract.where("contracts.user_id = #{current_user.id}").group(:source).count.first[1] %></p>
+      </div>
+      <div class="col-3 mx-4 px-4 mb-3 my-profile-card">
+        <h5>€ Spent/month</h5>
+        <p><%= Contract.where("contracts.user_id = #{current_user.id}").sum(:price) %></p>
+      </div>
+      <div class="col-3 mx-4 px-4 mb-3 my-profile-card">
+        <h5>Inactive contracts</h5>
+        <p><%= Contract.where("contracts.user_id = #{current_user.id}").where("contracts.active = false").count %></p>
+      </div>
+      <div class="col-3 mx-4 px-4 mb-3 my-profile-card">
+        <h5>Work contracts</h5>
+        <p><%= Contract.where("contracts.user_id = #{current_user.id}").group(:source).count.first[1][0] %></p>
+      </div>
+    </div>
+    <%= link_to "Back", root_path, class:"btn-gray", style:"width: 200px"  %>
+    <%= link_to "Edit Profile", "edit_profile", class: "btn-gray", style:"width: 200px; margin-left: 21px;"  %>
   </div>
-  <%= link_to "Back", root_path, class:"btn-gray", style:"width: 200px"  %>
-  <%= link_to "Edit Profile", "edit_profile", class: "btn-gray", style:"width: 200px; margin-left: 21px;"  %>
-</div>
 </div>
