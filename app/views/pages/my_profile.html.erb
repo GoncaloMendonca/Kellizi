@@ -99,8 +99,8 @@
       </div>
       <div class="col-4">
         <div class="my-profile-card mb-3">
-          <h5>€ Spent/month</h5>
-          <p><%= Contract.where("contracts.user_id = #{current_user.id}").sum(:price) %></p>
+          <h5>Spent/month</h5>
+          <p><%= Contract.where("contracts.user_id = #{current_user.id}").sum(:price) %> €</p>
         </div>
       </div>
       <div class="col-4">
